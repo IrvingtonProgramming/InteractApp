@@ -9,7 +9,7 @@ namespace InteractApp
 	public partial class EventListPage : ContentPage
 	{
 		public List<Event> SampleList =  new List<Event> () {
-			Event.newEvent(0, "invalid_image_uri", "Event0", new DateTime(), "Fremont, CA", "Test Event 0", new List<String> (){ "service" })
+			Event.newEvent(0, "http://bloggingtips.moneyreigninc.netdna-cdn.com/wp-content/uploads/2014/12/Event-Blogging-Strategies.jpg", "Event0", new DateTime(), "Fremont, CA", "Test Event 0", new List<String> (){ "service" })
 		};
 
 		public EventListPage ()

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="InteractApp.CustomEventCell">
+	<ViewCell.View>
+		<Grid Padding="5">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="45"></RowDefinition>
+				<RowDefinition Height="45"></RowDefinition>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="100"></ColumnDefinition>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+
+			<Image x:Name="CellImage" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Source="{Binding ImageUri}" Aspect="AspectFill"/>
+			<Label x:Name="CellNameLabel" Grid.Row="0" Grid.Column="1" Text="{Binding Name}" LineBreakMode="TailTruncation"></Label>
+			<Label x:Name="CellDescLabel" Grid.Row="1" Grid.Column="1" Text="{Binding Desc}" LineBreakMode="TailTruncation"></Label>
+		</Grid>
+	</ViewCell.View>
+</ViewCell>
