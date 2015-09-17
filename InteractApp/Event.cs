@@ -14,7 +14,7 @@ namespace InteractApp
 		public List<String> Tags { get; private set; }
 
 		public Event() {
-			this.Id = "-1";
+			this.Id = -1;
 			this.ImageUri = "http://bloggingtips.moneyreigninc.netdna-cdn.com/wp-content/uploads/2014/12/Event-Blogging-Strategies.jpg";
 			this.Name = "Test Event";
 			this.Date = new DateTime();
