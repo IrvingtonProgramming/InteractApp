@@ -21,7 +21,12 @@ namespace InteractApp
 			this.Title = "Events";
 
 			ToolbarItems.Add(new ToolbarItem {
-				Name = "My Info",
+				Text = "My Info",
+				Order = ToolbarItemOrder.Primary,
+			});
+
+			ToolbarItems.Add(new ToolbarItem {
+				Text = "My Events",
 				Order = ToolbarItemOrder.Primary,
 			});
 
