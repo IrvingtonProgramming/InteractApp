@@ -4,7 +4,7 @@
 			 xmlns:local="clr-namespace:InteractApp;assembly=InteractApp"
 			 x:Class="InteractApp.EventListPage">
 	<ContentPage.Content>
-		<ListView x:Name="EventList" RowHeight="100">
+		<ListView x:Name="EventList" RowHeight="150">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<local:CustomEventCell />

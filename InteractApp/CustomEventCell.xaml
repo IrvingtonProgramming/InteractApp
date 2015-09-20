@@ -3,17 +3,19 @@
 	<ViewCell.View>
 		<Grid Padding="5">
 			<Grid.RowDefinitions>
-				<RowDefinition Height="45"></RowDefinition>
-				<RowDefinition Height="45"></RowDefinition>
+				<RowDefinition Height="auto"></RowDefinition>
+				<RowDefinition Height="auto"></RowDefinition>
+				<RowDefinition Height="*"></RowDefinition>
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="100"></ColumnDefinition>
 				<ColumnDefinition Width="*"></ColumnDefinition>
 			</Grid.ColumnDefinitions>
 
-			<Image x:Name="CellImage" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Source="{Binding ImageUri}" Aspect="AspectFill"/>
-			<Label x:Name="CellNameLabel" Grid.Row="0" Grid.Column="1" Text="{Binding Name}" LineBreakMode="TailTruncation"></Label>
-			<Label x:Name="CellDescLabel" Grid.Row="1" Grid.Column="1" Text="{Binding Desc}" LineBreakMode="TailTruncation"></Label>
+			<Image x:Name="CellImage" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="{Binding ImageUri}" Aspect="AspectFill"/>
+			<Label x:Name="CellNameLabel" Grid.Row="0" Grid.Column="1" Text="{Binding Name}" FontSize="Medium" HorizontalOptions="FillAndExpand" XAlign="Center" LineBreakMode="TailTruncation"></Label>
+			<Label x:Name="CellLocationLabel" Grid.Row="1" Grid.Column="1" Text="{Binding Location}" FontSize="Small" HorizontalOptions="FillAndExpand" XAlign="Center" LineBreakMode="TailTruncation"></Label>
+			<Label x:Name="CellDescLabel" Grid.Row="2" Grid.Column="1" Text="{Binding Desc}" FontSize="Micro" HorizontalOptions="FillAndExpand" XAlign="Center"></Label>
 		</Grid>
 	</ViewCell.View>
 </ViewCell>
