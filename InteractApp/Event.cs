@@ -19,7 +19,7 @@ namespace InteractApp
 			this.Id = -1;
 			this.ImageUri = "http://bloggingtips.moneyreigninc.netdna-cdn.com/wp-content/uploads/2014/12/Event-Blogging-Strategies.jpg";
 			this.Name = "Test Event";
-			this.Date = new DateTime();
+			this.Date = DateTime.Now;
 			this.Location = "Hooli Headquarters";
 			this.Desc = "Test Event. If you are seeing this and you're a user, we probably screwed up.";
 			this.Tags = new List<String>() {"Testing", "Event"};
