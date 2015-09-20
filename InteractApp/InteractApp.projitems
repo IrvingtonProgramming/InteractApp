@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)CustomEventCell.xaml.cs">
       <DependentUpon>CustomEventCell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WrappedTruncatedLabel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)EventListPage.xaml">
