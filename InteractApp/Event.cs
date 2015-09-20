@@ -13,6 +13,8 @@ namespace InteractApp
 		public String Desc { get; private set; }
 		public List<String> Tags { get; private set; }
 
+		public String LocationDate {get {return String.Format("{0} - {1}", Location, Date.ToShortDateString());}}
+
 		public Event() {
 			this.Id = -1;
 			this.ImageUri = "http://bloggingtips.moneyreigninc.netdna-cdn.com/wp-content/uploads/2014/12/Event-Blogging-Strategies.jpg";
