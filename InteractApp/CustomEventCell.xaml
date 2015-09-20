@@ -3,13 +3,13 @@
 	<ViewCell.View>
 		<Grid Padding="5">
 			<Grid.RowDefinitions>
-				<RowDefinition Height="auto"></RowDefinition>
-				<RowDefinition Height="auto"></RowDefinition>
-				<RowDefinition Height="*"></RowDefinition>
+				<RowDefinition Height="auto" />
+				<RowDefinition Height="auto" />
+				<RowDefinition Height="*" />
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="100"></ColumnDefinition>
-				<ColumnDefinition Width="*"></ColumnDefinition>
+				<ColumnDefinition Width="100" />
+				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 
 			<Image Grid.Row="0" Grid.Column="0" Source="{Binding ImageUri}" Grid.RowSpan="3" Aspect="AspectFill"/>
