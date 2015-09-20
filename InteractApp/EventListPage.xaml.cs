@@ -17,6 +17,14 @@ namespace InteractApp
 		public EventListPage ()
 		{
 			InitializeComponent ();
+
+			this.Title = "Events";
+
+			ToolbarItems.Add(new ToolbarItem {
+				Name = "My Info",
+				Order = ToolbarItemOrder.Primary,
+			});
+
 			EventList.ItemsSource = SampleList;
 
 			EventList.ItemTapped += async (sender, e) => {
