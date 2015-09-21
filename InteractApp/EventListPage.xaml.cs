@@ -38,7 +38,7 @@ namespace InteractApp
 				((ListView)sender).SelectedItem = null; // de-select the row
 			};
 
-			Padding = new Thickness (0,Device.OnPlatform(20, 0, 0),0,0);
+			Padding = new Thickness (0,0,0,0);
 		}
 	}
 }
