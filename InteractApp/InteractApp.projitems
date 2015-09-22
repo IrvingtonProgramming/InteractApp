@@ -10,20 +10,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)InteractApp.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Event.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventListPage.xaml.cs">
       <DependentUpon>EventListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)CustomEventCell.xaml.cs">
-      <DependentUpon>CustomEventCell.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Event.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomEventCell.xaml.cs">
+    <DependentUpon>Views\CustomEventCell.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)WrappedTruncatedLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\WrappedTruncatedLabel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)EventListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)CustomEventCell.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views/CustomEventCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
