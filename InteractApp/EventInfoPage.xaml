@@ -5,7 +5,7 @@
 
 			<StackLayout x:Name="EventInfoLayout" Orientation="Vertical" Padding="6,0">
 
-				<BoxView x:Name="boxView1" Color="White" WidthRequest="70" HeightRequest="2"/>
+				<BoxView Color="White" WidthRequest="70" HeightRequest="2"/>
 				<StackLayout x:Name="header" Orientation="Horizontal" >					
 					<Image Source="back.png" />
 			
@@ -17,7 +17,7 @@
 						    
 							FontAttributes="Bold"/>
 				</StackLayout>
-				<BoxView x:Name="boxView2" Color="White" WidthRequest="70" HeightRequest="2"/>
+				<BoxView Color="White" WidthRequest="70" HeightRequest="2"/>
 
 				<StackLayout x:Name="evtBasicInfo" Orientation="Horizontal">					
 					<Image x:Name="evtPic" Source="" />
@@ -32,10 +32,7 @@
 
 				</StackLayout>
 
-				<BoxView x:Name="boxView3"
-				Color="White"
-				WidthRequest="70"
-				HeightRequest="2"/>
+				<BoxView Color="White" WidthRequest="70" HeightRequest="2"/>
 
 				<StackLayout>
 					<Label x:Name="evtDescLabel" Text="loading..." 
@@ -45,9 +42,9 @@
 					<Label x:Name="evtDesc" Text="loading..." /> 
 				</StackLayout>
 				
-				<BoxView x:Name="boxView4" Color="White" WidthRequest="70" HeightRequest="2"/>
+				<BoxView Color="White" WidthRequest="70" HeightRequest="2"/>
 				<StackLayout Spacing = "0">
-					<Label x:Name="evtTagLabel" Text="loading..." />
+					<Label x:Name="evtTagLabel" Text="Tags: "/>
 				</StackLayout>
 			</StackLayout>
 		</ScrollView>
