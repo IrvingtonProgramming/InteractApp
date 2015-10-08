@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.interact_5170.interactapp">
-	<uses-sdk android:minSdkVersion="15" />
-	<application android:label="Interact">
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="21" />
+	<application android:label="Interact District 5170">
 	</application>
 </manifest>

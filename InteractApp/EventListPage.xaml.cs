@@ -33,9 +33,11 @@ namespace InteractApp
 			EventList.ItemsSource = SampleList;
 
 			EventList.ItemTapped += async (sender, e) => {
-				await DisplayAlert("Tapped", ((Event) e.Item).Name + " row was tapped", "OK");
-				Debug.WriteLine("Tapped: " + ((Event) e.Item).Name);
-				((ListView)sender).SelectedItem = null; // de-select the row
+				Event evt = (Event)e.Item;
+				Debug.WriteLine("Tapped: " + (evt.Name));
+				var page = new EventInfoPage(evt);
+				((ListView)sender).SelectedItem = null;
+				await Navigation.PushAsync(page);
 			};
 
 			Padding = new Thickness (0,0,0,0);

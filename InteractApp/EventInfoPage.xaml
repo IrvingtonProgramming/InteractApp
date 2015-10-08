@@ -1,52 +1,52 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="InteractApp.EventInfoPage">
-<ContentPage.Content>
-	<ScrollView  x:Name="EventInfo" Orientation="Vertical" VerticalOptions="FillAndExpand">
+	<ContentPage.Content>
+		<ScrollView  x:Name="EventInfo" Orientation="Vertical" VerticalOptions="FillAndExpand">
 
-			<StackLayout x:Name="EventInfoLayout" Orientation="Vertical" Padding="6,0">
+				<StackLayout x:Name="EventInfoLayout" Orientation="Vertical" Padding="6,0">
 
-				<BoxView Color="White" WidthRequest="70" HeightRequest="2"/>
-				<StackLayout x:Name="header" Orientation="Horizontal" >					
-					<Image Source="back.png" />
-			
-					<Label x:Name="evtName" Text="loading..." 
-							HorizontalOptions="CenterAndExpand"
-							VerticalOptions="Center"
-							Font="30"
-							TextColor="Olive"
-						    
-							FontAttributes="Bold"/>
-				</StackLayout>
-				<BoxView Color="White" WidthRequest="70" HeightRequest="2"/>
+					<BoxView Color="White" WidthRequest="70" HeightRequest="2"/>
+					<StackLayout x:Name="header" Orientation="Horizontal" >					
+						<Image Source="back.png" />
+				
+						<Label x:Name="evtName" Text="loading..." 
+								HorizontalOptions="CenterAndExpand"
+								VerticalOptions="Center"
+								Font="30"
+								TextColor="Olive"
+							    
+								FontAttributes="Bold"/>
+					</StackLayout>
+					<BoxView Color="White" WidthRequest="70" HeightRequest="2"/>
 
-				<StackLayout x:Name="evtBasicInfo" Orientation="Horizontal">					
-					<Image x:Name="evtPic" Source="" />
-					<StackLayout Orientation="Vertical">
-						<Label x:Name="evtDate" Text="loading..." 
-								Font="10"
-								TextColor="Olive"/>
-						<Label x:Name="evtLoc" Text="loading..."
-								Font="10"
-								TextColor="Olive"/>
+					<StackLayout x:Name="evtBasicInfo" Orientation="Horizontal">					
+						<Image x:Name="evtPic" Source="" />
+						<StackLayout Orientation="Vertical">
+							<Label x:Name="evtDate" Text="loading..." 
+									Font="10"
+									TextColor="Olive"/>
+							<Label x:Name="evtLoc" Text="loading..."
+									Font="10"
+									TextColor="Olive"/>
+						</StackLayout>
+
 					</StackLayout>
 
-				</StackLayout>
+					<BoxView Color="White" WidthRequest="70" HeightRequest="2"/>
 
-				<BoxView Color="White" WidthRequest="70" HeightRequest="2"/>
-
-				<StackLayout>
-					<Label x:Name="evtDescLabel" Text="loading..." 
-							Font="20"
-							TextColor="Olive"							    
-							FontAttributes="Bold"/>
-					<Label x:Name="evtDesc" Text="loading..." /> 
+					<StackLayout>
+						<Label x:Name="evtDescLabel" Text="loading..." 
+								Font="20"
+								TextColor="Olive"							    
+								FontAttributes="Bold"/>
+						<Label x:Name="evtDesc" Text="loading..." /> 
+					</StackLayout>
+					
+					<BoxView Color="White" WidthRequest="70" HeightRequest="2"/>
+					<StackLayout Spacing = "0">
+						<Label x:Name="evtTagLabel" Text="Tags: "/>
+					</StackLayout>
 				</StackLayout>
-				
-				<BoxView Color="White" WidthRequest="70" HeightRequest="2"/>
-				<StackLayout Spacing = "0">
-					<Label x:Name="evtTagLabel" Text="Tags: "/>
-				</StackLayout>
-			</StackLayout>
-		</ScrollView>
-</ContentPage.Content>
+			</ScrollView>
+	</ContentPage.Content>
 </ContentPage>

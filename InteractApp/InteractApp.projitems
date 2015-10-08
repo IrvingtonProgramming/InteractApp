@@ -15,20 +15,30 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\Event.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\CustomEventCell.xaml.cs">
-    <DependentUpon>Views\CustomEventCell.xaml</DependentUpon>
+      <DependentUpon>Views\CustomEventCell.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\WrappedTruncatedLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventInfoPage.xaml.cs">
+      <DependentUpon>EventInfoPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)EventListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views/CustomEventCell.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CustomEventCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)EventInfoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)InteractApp.projitems" />
+    <None Include="$(MSBuildThisFileDirectory)InteractApp.shproj" />
   </ItemGroup>
 </Project>
