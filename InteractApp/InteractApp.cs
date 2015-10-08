@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using Xamarin.Forms;
 
@@ -8,6 +8,7 @@ namespace InteractApp
 	{
 		public App ()
 		{
+			
 			// The root page of your application
 			MainPage = new NavigationPage(new EventListPage());
 		}
