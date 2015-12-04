@@ -11,8 +11,7 @@
 				<ColumnDefinition Width="100" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
-
-			<Image Grid.Row="0" Grid.Column="0" Source="{Binding ImageUri}" Grid.RowSpan="3" Aspect="AspectFill"/>
+			<Grid x:Name="EventImageGrid" Grid.Column="0" Grid.RowSpan="3" />
 			<Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" FontSize="Medium" HorizontalOptions="FillAndExpand" XAlign="Center" LineBreakMode="TailTruncation" />
 			<Label Grid.Row="1" Grid.Column="1" Text="{Binding LocationDate}" FontSize="Small" HorizontalOptions="FillAndExpand" XAlign="Center" LineBreakMode="TailTruncation" />
 			<local:WrappedTruncatedLabel Grid.Row="2" Grid.Column="1" Text="{Binding Desc}" FontSize="Micro" HorizontalOptions="FillAndExpand" XAlign="Center" />

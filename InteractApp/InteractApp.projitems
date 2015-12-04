@@ -21,6 +21,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)EventInfoPage.xaml.cs">
       <DependentUpon>EventInfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\IParseStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\EventManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ValueConverters\BooleanNegationConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Common\ColorResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EventListPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ViewPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)EventListPage.xaml">
@@ -36,6 +44,10 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Data\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\ValueConverters\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Common\" />
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)InteractApp.projitems" />

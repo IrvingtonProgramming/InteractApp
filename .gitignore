@@ -39,3 +39,6 @@ Thumbs.db
 
 #dotCover
 *.dotCover
+
+#API Keys
+InteractApp/Constants.cs

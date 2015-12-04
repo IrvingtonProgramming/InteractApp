@@ -10,14 +10,20 @@ using Android.OS;
 
 namespace InteractApp.Droid
 {
-	[Activity (Label = "InteractApp.Droid", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity (Label = "Interact 5170", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
+		EventManager eventManager;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);
+
+			eventManager = new EventManager (ParseStorage.Default);
+
+			App.SetEventManager (eventManager);
 
 			LoadApplication (new App ());
 		}
