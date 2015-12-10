@@ -24,6 +24,7 @@ namespace InteractApp
 			ToolbarItems.Add (new ToolbarItem {
 				Text = "My Info",
 				Order = ToolbarItemOrder.Primary,
+				Command = new Command (this.ShowMyInfoPage),
 			});
 
 			ToolbarItems.Add (new ToolbarItem {
@@ -40,6 +41,11 @@ namespace InteractApp
 				((ListView)sender).SelectedItem = null;
 				await Navigation.PushAsync (page);
 			};
+		}
+
+		private void ShowMyInfoPage ()
+		{
+			Navigation.PushAsync (new MyInfoPage ());
 		}
 	}
 }

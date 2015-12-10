@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="InteractApp.MyInfoPage">
+	<ContentPage.Content>
+		<StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<Entry x:Name="MyInfoName" Placeholder="Name" />
+			<Entry x:Name="MyInfoEmail" Placeholder="Email" Keyboard="Email" />
+			<Entry x:Name="MyInfoPhoneNo" Placeholder="Phone Number" Keyboard="Telephone" />
+			<Entry x:Name="MyInfoSchool" Placeholder="School" />
+			<Picker x:Name="MyInfoGrade" Title="Grade" />
+			<Picker x:Name="MyInfoArea" Title="Area" />
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

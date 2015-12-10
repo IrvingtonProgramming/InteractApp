@@ -29,6 +29,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EventListPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MyInfoPage.xaml.cs">
+      <DependentUpon>MyInfoPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)EventListPage.xaml">
@@ -38,6 +41,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)EventInfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MyInfoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
