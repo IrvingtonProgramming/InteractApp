@@ -12,7 +12,7 @@ namespace InteractApp
 			InitializeComponent ();
 			EventInfo.BindingContext = e;
 			this.Title = "Event Info";
-			evtTagLabel.Text = "Tags:  " + String.Join ("    ", e.Tags);
+			evtTagLabel.Text = "Tags:  " + String.Join ("  |  ", e.Tags);
 
 			ToolbarItems.Add (new ToolbarItem {
 				Text = "RSVP",

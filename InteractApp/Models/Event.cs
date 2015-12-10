@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using Parse;
@@ -50,9 +51,9 @@ namespace InteractApp
 		}
 
 		[ParseFieldName ("Tags")]
-		public List<string> Tags {
-			get { return GetProperty<List<string>> (); }
-			private set { SetProperty<List<string>> (value); }
+		public IList<string> Tags {
+			get { return GetProperty<IList<string>> ().ToList (); }
+			private set { SetProperty<IList<string>> ((IList<string>)value); }
 		}
 
 		public string LocationDate { get { return string.Format ("{0} - {1}", this.Location, this.Date.ToShortDateString ()); } }
