@@ -16,7 +16,12 @@ namespace InteractApp
 
 		[ParseFieldName ("ImageUri")]
 		public string ImageUri {
-			get { return GetProperty<string> (); }
+			get {
+				if (String.IsNullOrEmpty (GetProperty<string> ())) {
+					return "event_placeholder.jpg";
+				}
+				return GetProperty<string> ();
+			}
 			private set { SetProperty<string> (value); }
 		}
 

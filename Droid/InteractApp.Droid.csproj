@@ -102,6 +102,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\event_placeholder.png" />
   </ItemGroup>
   <Import Project="..\InteractApp\InteractApp.projitems" Label="Shared" Condition="Exists('..\InteractApp\InteractApp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
