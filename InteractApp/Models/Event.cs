@@ -9,11 +9,10 @@ namespace InteractApp
 	[ParseClassName ("Event")]
 	public class Event : ParseObject
 	{
-		public static readonly string DEFAULT_URI = "http://bloggingtips.moneyreigninc.netdna-cdn.com/wp-content/uploads/2014/12/Event-Blogging-Strategies.jpg";
-		public static readonly string DEFAULT_NAME = "Test Event";
+		public static readonly string DEFAULT_NAME = "An Error Has Occurred";
 		public static readonly string DEFAULT_LOCATION = "Hooli Headquarters";
-		public static readonly string DEFAULT_DESC = "Test Event. If you are seeing this and you're a user, we probably screwed up.";
-		public static readonly List<string> DEFAULT_TAGS = new List<string> () { "Testing", "Event" };
+		public static readonly string DEFAULT_DESC = "If you are seeing this and you're a user, we probably screwed up. Please try again or contact Interact Club.";
+		public static readonly List<string> DEFAULT_TAGS = new List<string> () { "Error", "Event" };
 
 		[ParseFieldName ("ImageUri")]
 		public string ImageUri {
@@ -79,12 +78,12 @@ namespace InteractApp
 			return e;
 		}
 
-		public static Event newDefaultEvent (string ExceptionString)
+		public static Event newErrorEvent (string ExceptionString)
 		{
 			if (ExceptionString != null) {
-				return new Event (DEFAULT_URI, DEFAULT_NAME, DateTime.Now, DEFAULT_LOCATION, ExceptionString, DEFAULT_TAGS);
+				return new Event (null, DEFAULT_NAME, DateTime.Now, DEFAULT_LOCATION, ExceptionString, DEFAULT_TAGS);
 			}
-			return new Event (DEFAULT_URI, DEFAULT_NAME, DateTime.Now, DEFAULT_LOCATION, DEFAULT_DESC, DEFAULT_TAGS);
+			return new Event (null, DEFAULT_NAME, DateTime.Now, DEFAULT_LOCATION, DEFAULT_DESC, DEFAULT_TAGS);
 		}
 	}
 }
