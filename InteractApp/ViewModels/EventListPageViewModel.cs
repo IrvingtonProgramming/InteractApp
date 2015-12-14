@@ -20,7 +20,11 @@ namespace InteractApp
 			}
 
 			set {
-				this._isLoading = value;
+				if (_isLoading == value) {
+					return;
+				}
+
+				_isLoading = value;
 				RaisePropertyChanged ("IsLoading");
 			}
 		}
