@@ -32,7 +32,7 @@ namespace InteractApp
 				Order = ToolbarItemOrder.Primary,
 			});
 
-			ViewModel.LoadItemsAsync (App.EventManager.GetEventsAsync ());
+			ViewModel.LoadEventsCommand.Execute (null);
 
 			EventList.ItemTapped += async (sender, e) => {
 				Event evt = (Event)e.Item;

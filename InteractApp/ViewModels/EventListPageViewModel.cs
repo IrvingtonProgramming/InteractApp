@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Xamarin.Forms;
 
 namespace InteractApp
 {
@@ -16,24 +16,52 @@ namespace InteractApp
 
 		public bool IsLoading {
 			get {
-				return this._isLoading;
+				return _isLoading;
 			}
 
 			set {
-				if (_isLoading == value) {
-					return;
+				if (_isLoading != value) {
+					_isLoading = value;
+					RaisePropertyChanged ("IsLoading");
 				}
-
-				_isLoading = value;
-				RaisePropertyChanged ("IsLoading");
 			}
 		}
 
-		public async void LoadItemsAsync (Task<List<Event>> loadTask)
+		private bool _isRefreshing;
+
+		public bool IsRefreshing {
+			get {
+				return _isRefreshing;
+			}
+
+			set {
+				if (_isRefreshing != value) {
+					_isRefreshing = value;
+					RaisePropertyChanged ("IsRefreshing");
+				}
+			}
+		}
+
+		private Command loadEventsCommand;
+
+		public Command LoadEventsCommand {
+			get { 
+				return loadEventsCommand ?? (loadEventsCommand = new Command (ExecuteLoadEventsCommand, () => {
+					return !IsRefreshing;
+				})); 
+			}
+		}
+
+		private async void ExecuteLoadEventsCommand ()
 		{
-			IsLoading = true;
+			if (IsRefreshing)
+				return;
+
+			IsRefreshing = true;
+			LoadEventsCommand.ChangeCanExecute ();
+
 			try {
-				Items = await loadTask;
+				Items = await App.EventManager.GetEventsAsync ();
 			} catch (Exception e) {
 				if (e.StackTrace.Contains ("HttpWebRequest")) {
 					Items = new List<Event> () { Event.newErrorEvent ("A network error has occurred. Please check your network connection.") };
@@ -41,7 +69,10 @@ namespace InteractApp
 					Items = new List<Event> () { Event.newErrorEvent ("Exception while loading data. Please try again or contact Interact Club.\n\n" + e.StackTrace) };
 				}
 			}
+
+			IsRefreshing = false;
 			IsLoading = false;
+			LoadEventsCommand.ChangeCanExecute ();
 		}
 
 		private List<Event> _items;
