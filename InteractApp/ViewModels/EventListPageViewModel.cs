@@ -31,7 +31,11 @@ namespace InteractApp
 			try {
 				Items = await loadTask;
 			} catch (Exception e) {
-				Items = new List<Event> () { Event.newDefaultEvent ("Exception while loading data:\n" + e.StackTrace) };
+				if (e.StackTrace.Contains ("HttpWebRequest")) {
+					Items = new List<Event> () { Event.newErrorEvent ("A network error has occurred. Please check your network connection.") };
+				} else {
+					Items = new List<Event> () { Event.newErrorEvent ("Exception while loading data. Please try again or contact Interact Club.\n\n" + e.StackTrace) };
+				}
 			}
 			IsLoading = false;
 		}
