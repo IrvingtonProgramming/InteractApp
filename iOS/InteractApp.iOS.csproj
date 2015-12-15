@@ -121,6 +121,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="WrappedTruncatedLabelRenderer.cs" />
+    <Compile Include="ParseStorage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="ITunesArtwork" />
