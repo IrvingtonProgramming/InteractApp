@@ -18,7 +18,7 @@ namespace InteractApp
 		public string ImageUri {
 			get {
 				if (String.IsNullOrEmpty (GetProperty<string> ())) {
-					return "event_placeholder.jpg";
+					return "event_placeholder.png";
 				}
 				return GetProperty<string> ();
 			}
