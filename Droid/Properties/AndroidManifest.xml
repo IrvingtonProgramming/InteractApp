@@ -11,12 +11,11 @@
 	<uses-permission android:name="com.interact_5170.interactapp.permission.C2D_MESSAGE" />
 	<application android:name="com.interact_5170.interactapp.InteractApplication" android:label="Interact 5170">
 		<service android:name="parse.ParsePushService" />
-		<receiver android:name="parse.ParsePushBroadcastReceiver"
-				  android:permission="com.google.android.c2dm.permission.SEND">
+		<receiver android:name="parse.ParsePushBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>
-	    		<action android:name="com.google.android.c2dm.intent.RECEIVE" />
-	    		<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-	    		<category android:name="com.interact_5170.interactapp" />
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+				<category android:name="com.interact_5170.interactapp" />
 			</intent-filter>
 		</receiver>
 	</application>

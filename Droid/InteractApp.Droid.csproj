@@ -28,7 +28,8 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
     <RunCodeAnalysis>false</RunCodeAnalysis>
-    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -86,6 +87,7 @@
     <Compile Include="WrappedTruncatedLabelRenderer.cs" />
     <Compile Include="InteractApplication.cs" />
     <Compile Include="ParseStorage.cs" />
+    <Compile Include="SplashScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -103,6 +105,11 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\event_placeholder.png" />
+    <AndroidResource Include="Resources\drawable\SplashScreen.xml" />
+    <AndroidResource Include="Resources\values\Styles.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\splashscreen_img.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\splashscreen_img.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splashscreen_img.9.png" />
   </ItemGroup>
   <Import Project="..\InteractApp\InteractApp.projitems" Label="Shared" Condition="Exists('..\InteractApp\InteractApp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

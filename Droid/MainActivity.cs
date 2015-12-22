@@ -10,7 +10,7 @@ using Android.OS;
 
 namespace InteractApp.Droid
 {
-	[Activity (Label = "Interact 5170", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity (Label = "Interact 5170", Icon = "@drawable/icon", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
 		EventManager eventManager;
