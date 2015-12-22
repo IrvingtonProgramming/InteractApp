@@ -13,6 +13,7 @@ namespace InteractApp
 		public static readonly string DEFAULT_LOCATION = "Hooli Headquarters";
 		public static readonly string DEFAULT_DESC = "If you are seeing this and you're a user, we probably screwed up. Please try again or contact Interact Club.";
 		public static readonly List<string> DEFAULT_TAGS = new List<string> () { "Error", "Event" };
+		public static readonly string DEFAULT_FORM_URI = "";
 
 		[ParseFieldName ("ImageUri")]
 		public string ImageUri {
@@ -55,13 +56,19 @@ namespace InteractApp
 			private set { SetProperty<IList<string>> ((IList<string>)value); }
 		}
 
+		[ParseFieldName ("FormUri")]
+		public string FormUri {
+			get { return GetProperty<string> (); }
+			private set { SetProperty<string> (value); }
+		}
+
 		public string LocationDate { get { return string.Format ("{0} - {1}", this.Location, this.Date.ToShortDateString ()); } }
 
 		public Event ()
 		{
 		}
 
-		public Event (string EImageUri, string EName, DateTime EDate, string ELocation, string EDesc, List<string> ETags)
+		public Event (string EImageUri, string EName, DateTime EDate, string ELocation, string EDesc, List<string> ETags, string EFormUri)
 		{
 			this.ImageUri = EImageUri;
 			this.Name = EName;
@@ -69,11 +76,12 @@ namespace InteractApp
 			this.Location = ELocation;
 			this.Desc = EDesc;
 			this.Tags = ETags;
+			this.FormUri = EFormUri;
 		}
 
-		public static Event newEvent (string EImageUri, string EName, DateTime EDate, string ELocation, string EDesc, List<string> ETags)
+		public static Event newEvent (string EImageUri, string EName, DateTime EDate, string ELocation, string EDesc, List<string> ETags, string EFormUri)
 		{
-			Event e = new Event (EImageUri, EName, EDate, ELocation, EDesc, ETags);
+			Event e = new Event (EImageUri, EName, EDate, ELocation, EDesc, ETags, EFormUri);
 			// TODO: Add restrictions?
 			return e;
 		}
@@ -81,9 +89,9 @@ namespace InteractApp
 		public static Event newErrorEvent (string ExceptionString)
 		{
 			if (ExceptionString != null) {
-				return new Event (null, DEFAULT_NAME, DateTime.Now, DEFAULT_LOCATION, ExceptionString, DEFAULT_TAGS);
+				return new Event (null, DEFAULT_NAME, DateTime.Now, DEFAULT_LOCATION, ExceptionString, DEFAULT_TAGS, DEFAULT_FORM_URI);
 			}
-			return new Event (null, DEFAULT_NAME, DateTime.Now, DEFAULT_LOCATION, DEFAULT_DESC, DEFAULT_TAGS);
+			return new Event (null, DEFAULT_NAME, DateTime.Now, DEFAULT_LOCATION, DEFAULT_DESC, DEFAULT_TAGS, DEFAULT_FORM_URI);
 		}
 	}
 }
