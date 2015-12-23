@@ -21,16 +21,16 @@ namespace InteractApp
 			this.Title = "Events";
 			Padding = new Thickness (0, 0, 0, 0);
 
-			ToolbarItems.Add (new ToolbarItem {
-				Text = "My Info",
-				Order = ToolbarItemOrder.Primary,
-				Command = new Command (this.ShowMyInfoPage),
-			});
+//			ToolbarItems.Add (new ToolbarItem {
+//				Text = "My Info",
+//				Order = ToolbarItemOrder.Primary,
+//				Command = new Command (this.ShowMyInfoPage),
+//			});
 
-			ToolbarItems.Add (new ToolbarItem {
-				Text = "My Events",
-				Order = ToolbarItemOrder.Primary,
-			});
+//			ToolbarItems.Add (new ToolbarItem {
+//				Text = "My Events",
+//				Order = ToolbarItemOrder.Primary,
+//			});
 
 			//To hide iOS list seperator 
 			EventList.SeparatorVisibility = SeparatorVisibility.None;
