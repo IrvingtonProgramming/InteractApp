@@ -11,7 +11,9 @@ namespace InteractApp
 		public App ()
 		{
 			// The root page of your application
-			MainPage = new NavigationPage (new EventListPage ());
+			MainPage = new NavigationPage (new EventListPage ()) {
+				BarBackgroundColor = ColorResources.NavBarColor,
+			};
 		}
 
 		protected override void OnStart ()
