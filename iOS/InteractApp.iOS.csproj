@@ -108,6 +108,9 @@
     <BundleResource Include="Resources\Icon-Small.png" />
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
+    <BundleResource Include="Resources\ic_filter.png" />
+    <BundleResource Include="Resources\ic_filter%402x.png" />
+    <BundleResource Include="Resources\ic_filter%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
