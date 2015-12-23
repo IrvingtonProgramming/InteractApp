@@ -32,6 +32,9 @@ namespace InteractApp
 				Order = ToolbarItemOrder.Primary,
 			});
 
+			//To hide iOS list seperator 
+			EventList.SeparatorVisibility = SeparatorVisibility.None;
+
 			ViewModel.LoadEventsCommand.Execute (null);
 
 			EventList.ItemTapped += async (sender, e) => {
