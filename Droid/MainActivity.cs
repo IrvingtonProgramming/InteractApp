@@ -11,7 +11,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace InteractApp.Droid
 {
-	[Activity (Label = "Interact 5170", Icon = "@drawable/icon", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity (Label = "Interact 5170", Icon = "@drawable/ic_launcher", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : FormsAppCompatActivity
 	{
 		EventManager eventManager;
