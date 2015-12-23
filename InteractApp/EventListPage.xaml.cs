@@ -58,9 +58,26 @@ namespace InteractApp
 			Navigation.PushAsync (new MyInfoPage ());
 		}
 
-		private void Filter ()
+		private async void Filter ()
 		{
+			var action = await DisplayActionSheet ("Filter:", "OK", "Clear all", "Name", "Date", "Tag");
+			Debug.WriteLine ("Action: " + action);
+			switch (action) {
+
+			case "Clear all":
+				ViewModel.LoadEventsCommand.Execute (null);
+				break;
 			
+			case "Name":
+				break;
+
+			case "Date":
+				break;
+
+			case "Tag":
+				break;
+
+			}
 		}
 	}
 }
