@@ -30,6 +30,9 @@
                                     <constraint id="95" firstAttribute="width" constant="160"/>
                                     <constraint id="96" firstAttribute="height" constant="240"/>
                                 </constraints>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="240" y="160" width="160" height="240"/>
+                                </variation>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
