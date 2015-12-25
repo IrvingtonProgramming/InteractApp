@@ -12,7 +12,7 @@ namespace InteractApp
 		{
 			// The root page of your application
 			MainPage = new NavigationPage (new EventListPage ()) {
-				BarBackgroundColor = ColorResources.NavBarColor,
+				BarBackgroundColor = ColorResources.InteractColor,
 			};
 		}
 

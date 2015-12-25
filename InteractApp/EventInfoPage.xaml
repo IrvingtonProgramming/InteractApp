@@ -3,9 +3,8 @@
 	<ContentPage.Content>
 		<ScrollView x:Name="EventInfo" Orientation="Vertical" VerticalOptions="FillAndExpand" Padding="8,0">
 			<StackLayout Orientation="Vertical">
-				<BoxView Color="White" HeightRequest="2" />
-				<Label Text="{Binding E.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Font="30" TextColor="Olive" FontAttributes="Bold" />
-				<BoxView Color="White" HeightRequest="2" />
+				<Label Text="{Binding E.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Font="30" TextColor="{x:Static local:ColorResources.InteractColor}" FontAttributes="Bold" />
+				<BoxView Color="{x:Static local:ColorResources.InteractColor}" HeightRequest="2" />
 				<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 					<ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" Color="{x:Static local:ColorResources.ActivityIndicator}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
 					<Image Source="{Binding E.ImageUri}" Aspect="AspectFill" />
@@ -19,15 +18,15 @@
 						<ColumnDefinition Width="auto" />
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
-					<Label Grid.Row="0" Grid.Column="0" Text="Date:" TextColor="Olive" FontSize="Medium" FontAttributes="Bold" YAlign="Center" />
-					<Label Grid.Row="1" Grid.Column="0" Text="Location:" TextColor="Olive" FontSize="Medium" FontAttributes="Bold" YAlign="Center" />
+					<Label Grid.Row="0" Grid.Column="0" Text="Date:" TextColor="{x:Static local:ColorResources.InteractColor}" FontSize="Medium" FontAttributes="Bold" YAlign="Center" />
+					<Label Grid.Row="1" Grid.Column="0" Text="Location:" TextColor="{x:Static local:ColorResources.InteractColor}" FontSize="Medium" FontAttributes="Bold" YAlign="Center" />
 					<Label Grid.Row="0" Grid.Column="1" Text="{Binding E.Date, StringFormat='{0:f}'}" FontSize="Small" HorizontalOptions="FillAndExpand" XAlign="Center" YAlign="Center" LineBreakMode="TailTruncation" />
 					<Label Grid.Row="1" Grid.Column="1" Text="{Binding E.Location}" FontSize="Small" HorizontalOptions="FillAndExpand" XAlign="Center" YAlign="Center" LineBreakMode="TailTruncation" />
 				</Grid>
-				<BoxView Color="White" HeightRequest="2" />
-				<Label Text="Event Description" Font="20" TextColor="Olive" FontAttributes="Bold" />
+				<BoxView Color="{x:Static local:ColorResources.InteractColor}" HeightRequest="2" />
+				<Label Text="Event Description" Font="20" TextColor="{x:Static local:ColorResources.InteractColor}" FontAttributes="Bold" />
 				<Label Text="{Binding E.Desc}" />
-				<BoxView Color="White" HeightRequest="2" />
+				<BoxView Color="{x:Static local:ColorResources.InteractColor}" HeightRequest="2" />
 				<Label x:Name="evtTagLabel" Text="{Binding ETags}" />
 			</StackLayout>
 		</ScrollView>
