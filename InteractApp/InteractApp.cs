@@ -3,7 +3,9 @@ using System;
 using Xamarin.Forms;
 
 using Parse;
+using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace InteractApp
 {
 	public class App : Application

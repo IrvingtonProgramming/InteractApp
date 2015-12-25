@@ -66,6 +66,7 @@
         <image name="Icon-Small.png" width="29" height="29"/>
         <image name="Icon-Small-40.png" width="40" height="40"/>
         <image name="event_placeholder.png" width="215" height="215"/>
+        <image name="ic_filter.png" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedScreenMetrics key="destination" type="retina47"/>
