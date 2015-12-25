@@ -26,7 +26,7 @@ namespace InteractApp
 			});
 
 			MessagingCenter.Subscribe<EventInfoPageViewModel> (this, "Invalid URI", (sender) => {
-				DisplayAlert ("Oops", "Invalid URI, please contact Interact.", "YESSIR");
+				DisplayAlert ("Oops", "Invalid URI. Either you can't RSVP to this, or we screwed up. If you believe we screwed up, please contact Interact.", "YESSIR");
 			});
 		}
 
