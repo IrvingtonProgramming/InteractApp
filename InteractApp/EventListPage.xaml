@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<local:EventListPageBase xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:InteractApp;assembly=InteractApp" x:Class="InteractApp.EventListPage" xmlns:xlabs="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
+<local:EventListPageBase xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:InteractApp;assembly=InteractApp" x:Class="InteractApp.EventListPage" xmlns:xlabs="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" Title="Events" Padding="0,0,0,0">
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<local:BooleanNegationConverter x:Key="not" />

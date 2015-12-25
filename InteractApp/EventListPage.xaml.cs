@@ -18,13 +18,10 @@ namespace InteractApp
 		{
 			InitializeComponent ();
 
-			this.Title = "Events";
-			Padding = new Thickness (0, 0, 0, 0);
-
 //			ToolbarItems.Add (new ToolbarItem {
 //				Text = "My Info",
 //				Order = ToolbarItemOrder.Primary,
-//				Command = new Command (this.ShowMyInfoPage),
+//				Command = new Command (() => Navigation.PushAsync (new MyInfoPage ())),
 //			});
 
 //			ToolbarItems.Add (new ToolbarItem {
@@ -46,16 +43,10 @@ namespace InteractApp
 
 			EventList.ItemTapped += async (sender, e) => {
 				Event evt = (Event)e.Item;
-				Debug.WriteLine ("Tapped: " + (evt.Name));
 				var page = new EventInfoPage (evt);
 				((ListView)sender).SelectedItem = null;
 				await Navigation.PushAsync (page);
 			};
-		}
-
-		private void ShowMyInfoPage ()
-		{
-			Navigation.PushAsync (new MyInfoPage ());
 		}
 
 		private async void Filter ()
