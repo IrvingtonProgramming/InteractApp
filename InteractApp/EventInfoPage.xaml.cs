@@ -29,7 +29,5 @@ namespace InteractApp
 				DisplayAlert ("Oops", "Invalid URI. Either you can't RSVP to this, or we screwed up. If you believe we screwed up, please contact Interact.", "YESSIR");
 			});
 		}
-
-
 	}
 }
