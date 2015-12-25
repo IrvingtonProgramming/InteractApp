@@ -1,36 +1,35 @@
-﻿using System;
-using System.Diagnostics;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace InteractApp
 {
 	public partial class EventInfoPage : ContentPage
 	{
-		private Event E;
+		readonly EventInfoPageViewModel _viewModel;
 
-		public EventInfoPage (Event e)
+		public EventInfoPageViewModel ViewModel {
+			get {
+				return _viewModel;
+			}
+		}
+
+		public EventInfoPage (Event evt)
 		{
 			InitializeComponent ();
-			E = e;
-			EventInfo.BindingContext = e;
-			this.Title = "Event Info";
-			evtTagLabel.Text = "Tags:  " + String.Join ("  |  ", e.Tags);
+
+			_viewModel = new EventInfoPageViewModel (evt);
+			BindingContext = _viewModel;
 
 			ToolbarItems.Add (new ToolbarItem {
 				Text = "RSVP",
 				Order = ToolbarItemOrder.Primary,
-				Command = new Command (this.RSVP),
+				Command = new Command (ViewModel.RSVP),
+			});
+
+			MessagingCenter.Subscribe<EventInfoPageViewModel> (this, "Invalid URI", (sender) => {
+				DisplayAlert ("Oops", "Invalid URI, please contact Interact.", "YESSIR");
 			});
 		}
 
-		private void RSVP ()
-		{
-			try {
-				Device.OpenUri (new Uri (E.FormUri));
-			} catch (UriFormatException) {
-				DisplayAlert ("Oops", "Invalid URI, please contact Interact.", "YESSIR");
-			}
-		}
+
 	}
 }

@@ -32,6 +32,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)MyInfoPage.xaml.cs">
       <DependentUpon>MyInfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EventInfoPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)EventListPage.xaml">
