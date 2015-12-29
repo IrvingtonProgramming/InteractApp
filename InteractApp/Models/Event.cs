@@ -18,10 +18,11 @@ namespace InteractApp
 		[ParseFieldName ("ImageUri")]
 		public string ImageUri {
 			get {
-				if (String.IsNullOrEmpty (GetProperty<string> ())) {
+				string v = GetProperty<string> ();
+				if (String.IsNullOrEmpty (v) || v == "invalid") {
 					return "event_placeholder.png";
 				}
-				return GetProperty<string> ();
+				return v;
 			}
 			private set { SetProperty<string> (value); }
 		}

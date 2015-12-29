@@ -42,3 +42,7 @@ Thumbs.db
 
 #API Keys
 InteractApp/Constants.cs
+
+#Parse Cloud Code
+*/.parse.local
+*/.parse.project
