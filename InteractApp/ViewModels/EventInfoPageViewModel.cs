@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
 using System;
+using ExifLib;
 
 namespace InteractApp
 {
@@ -52,8 +53,13 @@ namespace InteractApp
 		{
 			try {
 				Device.OpenUri (new Uri (E.FormUri));
-			} catch (UriFormatException) {
-				MessagingCenter.Send (this, "Invalid URI");
+			} catch (Exception ex) {
+				if (ex is UriFormatException || ex is ArgumentNullException) {
+					MessagingCenter.Send (this, "Invalid URI");
+					return;
+				}
+
+				throw;
 			}
 		}
 
