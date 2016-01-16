@@ -42,11 +42,11 @@ namespace InteractApp
 			}
 		}
 
-		private Command loadEventsCommand;
+		private Command loadAllEventsCommand;
 
-		public Command LoadEventsCommand {
+		public Command LoadAllEventsCommand {
 			get { 
-				return loadEventsCommand ?? (loadEventsCommand = new Command (ExecuteLoadEventsCommand, () => {
+				return loadAllEventsCommand ?? (loadAllEventsCommand = new Command (ExecuteLoadEventsCommand, () => {
 					return !IsRefreshing;
 				})); 
 			}
@@ -58,7 +58,7 @@ namespace InteractApp
 				return;
 
 			IsRefreshing = true;
-			LoadEventsCommand.ChangeCanExecute ();
+			LoadAllEventsCommand.ChangeCanExecute ();
 
 			try {
 				Items = await App.EventManager.GetEventsAsync ();
@@ -72,7 +72,7 @@ namespace InteractApp
 
 			IsRefreshing = false;
 			IsLoading = false;
-			LoadEventsCommand.ChangeCanExecute ();
+			LoadAllEventsCommand.ChangeCanExecute ();
 		}
 
 		private List<Event> _items;

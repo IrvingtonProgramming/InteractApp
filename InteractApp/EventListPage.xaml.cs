@@ -29,17 +29,17 @@ namespace InteractApp
 //				Order = ToolbarItemOrder.Primary,
 //			});
 
-//			ToolbarItems.Add (new ToolbarItem {
-//				Text = "Filter",
-//				Icon = "ic_filter.png",
-//				Order = ToolbarItemOrder.Primary,
-//				Command = new Command (this.Filter),
-//			});
+			ToolbarItems.Add (new ToolbarItem {
+				Text = "Filter",
+				Icon = "ic_filter.png",
+				Order = ToolbarItemOrder.Primary,
+				Command = new Command (this.Filter),
+			});
 
 			//To hide iOS list seperator 
 			EventList.SeparatorVisibility = SeparatorVisibility.None;
 
-			ViewModel.LoadEventsCommand.Execute (null);
+			ViewModel.LoadAllEventsCommand.Execute (null);
 
 			EventList.ItemTapped += async (sender, e) => {
 				Event evt = (Event)e.Item;
@@ -56,7 +56,7 @@ namespace InteractApp
 			switch (action) {
 
 			case "Clear all":
-				ViewModel.LoadEventsCommand.Execute (null);
+				ViewModel.LoadAllEventsCommand.Execute (null);
 				break;
 			
 			case "Name":
