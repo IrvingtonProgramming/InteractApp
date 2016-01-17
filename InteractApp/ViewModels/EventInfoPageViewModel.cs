@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
 using System;
-using ExifLib;
 
 namespace InteractApp
 {

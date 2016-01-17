@@ -6,19 +6,15 @@
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	<ContentPage.Content>
-		<xlabs:PopupLayout x:Name="PopupLayout">
-			<xlabs:PopupLayout.Content>
-				<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-					<ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" Color="{x:Static local:ColorResources.ActivityIndicator}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-					<ListView x:Name="EventList" RowHeight="150" ItemsSource="{Binding Items}" IsVisible="{Binding IsLoading, Converter={StaticResource not}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding LoadEventsCommand}" IsRefreshing="{Binding IsRefreshing, Mode=OneWay}">
-						<ListView.ItemTemplate>
-							<DataTemplate>
-								<local:CustomEventCell />
-							</DataTemplate>
-						</ListView.ItemTemplate>
-					</ListView>
-				</Grid>
-			</xlabs:PopupLayout.Content>
-		</xlabs:PopupLayout>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" Color="{x:Static local:ColorResources.ActivityIndicator}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+			<ListView x:Name="EventList" RowHeight="150" ItemsSource="{Binding Items}" IsVisible="{Binding IsLoading, Converter={StaticResource not}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding LoadEventsCommand}" IsRefreshing="{Binding IsRefreshing, Mode=OneWay}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<local:CustomEventCell />
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</Grid>
 	</ContentPage.Content>
 </local:EventListPageBase>

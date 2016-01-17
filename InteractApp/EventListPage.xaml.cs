@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Xamarin.Forms;
 
 using InteractApp;
+using System.Threading.Tasks;
 
 namespace InteractApp
 {
@@ -22,11 +23,6 @@ namespace InteractApp
 //				Text = "My Info",
 //				Order = ToolbarItemOrder.Primary,
 //				Command = new Command (() => Navigation.PushAsync (new MyInfoPage ())),
-//			});
-
-//			ToolbarItems.Add (new ToolbarItem {
-//				Text = "My Events",
-//				Order = ToolbarItemOrder.Primary,
 //			});
 
 			ToolbarItems.Add (new ToolbarItem {
@@ -51,24 +47,30 @@ namespace InteractApp
 
 		private async void Filter ()
 		{
-			var action = await DisplayActionSheet ("Filter:", "OK", "Clear all", "Name", "Date", "Tag");
-			Debug.WriteLine ("Action: " + action);
-			switch (action) {
+			string input = await OpenFilterPage (this.Navigation);
+			await DisplayAlert ("Debug", input, "Cancel");
+		}
 
-			case "Clear all":
-				ViewModel.LoadAllEventsCommand.Execute (null);
-				break;
-			
-			case "Name":
-				break;
+		public Task<string> OpenFilterPage (INavigation navigation)
+		{
+			// wait in this proc, until user finishes input 
+			var tcs = new TaskCompletionSource<string> ();
+			var page = new FilterPage ();
 
-			case "Date":
-				break;
 
-			case "Tag":
-				break;
+			page.FindByName<Button> ("FilterApplyButton").Clicked += async (s, e) => {
+				var result = page.FindByName<Entry> ("FilterNameEntry").Text;
+				await navigation.PopAsync ();
+				// pass result
+				tcs.SetResult (result);
+			};
 
-			}
+			// show page
+			navigation.PushAsync (page);
+
+			// code is waiting here, until result is passed with tcs.SetResult() in btn-Clicked
+			// then proc returns the result
+			return tcs.Task;
 		}
 	}
 }

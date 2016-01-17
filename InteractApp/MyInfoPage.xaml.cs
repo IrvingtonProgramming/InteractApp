@@ -15,10 +15,7 @@ namespace InteractApp
 			InitializeComponent ();
 			this.Title = "My Info";
 
-			MyInfoArea.Items.Clear ();
-			foreach (int i in AREA_CHOICES) {
-				MyInfoArea.Items.Add (i.ToString ());
-			}
+
 
 			MyInfoGrade.Items.Clear ();
 			foreach (int g in GRADE_CHOICES) {

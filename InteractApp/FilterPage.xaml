@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" x:Class="InteractApp.FilterPage" Title="Filter Events" Padding="0,0,0,0">
+	<ContentPage.Content>
+		<!---<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<Switch x:Name="FilterNameSwitch" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
+			<Label Text="Name: " Grid.Row="0" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
+			<Entry x:Name="FilterNameEntry" Grid.Row="0" Grid.Column="2" HeightRequest="{Binding FilterNameSwitch.IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+		</Grid>-->
+		<StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<StackLayout Orientation="Horizontal">
+				<Switch x:Name="FilterNameSwitch" VerticalOptions="Center" HorizontalOptions="Start" />
+				<Label Text="Name: " FontAttributes="Bold" VerticalOptions="Center" />
+				<Entry x:Name="FilterNameEntry" IsEnabled="{Binding Source={x:Reference Name=FilterNameSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			</StackLayout>
+			<StackLayout Orientation="Horizontal">
+				<Switch x:Name="FilterFromDateSwitch" VerticalOptions="Center" HorizontalOptions="Start" />
+				<Label Text="From Date: " FontAttributes="Bold" VerticalOptions="Center" />
+				<DatePicker x:Name="FilterFromDatePicker" IsEnabled="{Binding Source={x:Reference Name=FilterFromDateSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Date="{x:Static sys:DateTime.Now}" MaximumDate="{x:Static sys:DateTime.Now}">
+					<DatePicker.Format>MM-dd-yyyy</DatePicker.Format>
+				</DatePicker>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal">
+				<Switch x:Name="FilterToDateSwitch" VerticalOptions="Center" HorizontalOptions="Start" />
+				<Label Text="To Date: " FontAttributes="Bold" VerticalOptions="Center" />
+				<DatePicker x:Name="FilterToDatePicker" IsEnabled="{Binding Source={x:Reference Name=FilterToDateSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Date="{x:Static sys:DateTime.Now}" MaximumDate="{x:Static sys:DateTime.Now}">
+					<DatePicker.Format>MM-dd-yyyy</DatePicker.Format>
+				</DatePicker>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal">
+				<Switch x:Name="FilterSchoolSwitch" VerticalOptions="Center" HorizontalOptions="Start" />
+				<Label Text="School: " FontAttributes="Bold" VerticalOptions="Center" />
+				<Entry x:Name="FilterSchoolEntry" IsEnabled="{Binding Source={x:Reference Name=FilterSchoolSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			</StackLayout>
+			<StackLayout Orientation="Horizontal">
+				<Switch x:Name="FilterAreaSwitch" VerticalOptions="Center" HorizontalOptions="Start" />
+				<Label Text="Area: " FontAttributes="Bold" VerticalOptions="Center" />
+				<Picker x:Name="FilterAreaPicker" IsEnabled="{Binding Source={x:Reference Name=FilterAreaSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			</StackLayout>
+			<StackLayout Orientation="Horizontal">
+				<Button x:Name="FilterClearAllButton" Text="Clear All" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+				<Button x:Name="FilterApplyButton" Text="Apply" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
