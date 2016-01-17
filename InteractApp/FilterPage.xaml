@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" x:Class="InteractApp.FilterPage" Title="Filter Events" Padding="0,0,0,0">
+<local:FilterPageBase xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:InteractApp;assembly=InteractApp" xmlns:sys="clr-namespace:System;assembly=mscorlib" x:Class="InteractApp.FilterPage" Title="Filter Events" Padding="0,0,0,0">
 	<ContentPage.Content>
 		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 			<Grid.RowDefinitions>
@@ -18,27 +18,27 @@
 			<!-- Name Filter -->
 			<Switch x:Name="FilterNameSwitch" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
 			<Label Text="Name: " Grid.Row="0" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
-			<Entry x:Name="FilterNameEntry" Grid.Row="0" Grid.Column="2" IsEnabled="{Binding Source={x:Reference Name=FilterNameSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			<Entry x:Name="FilterNameEntry" Grid.Row="0" Grid.Column="2" Text="{Binding Name, Mode=TwoWay}" IsEnabled="{Binding Source={x:Reference Name=FilterNameSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 			<!-- From Date Filter -->
 			<Switch x:Name="FilterFromDateSwitch" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
-			<Label Text="From Date: " Grid.Row="1" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
-			<DatePicker x:Name="FilterFromDatePicker" Grid.Row="1" Grid.Column="2" IsEnabled="{Binding Source={x:Reference Name=FilterFromDateSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Date="{x:Static sys:DateTime.Now}" MaximumDate="{x:Static sys:DateTime.Now}">
+			<Label Text="From: " Grid.Row="1" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
+			<DatePicker x:Name="FilterFromDatePicker" Grid.Row="1" Grid.Column="2" IsEnabled="{Binding Source={x:Reference Name=FilterFromDateSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Date="{Binding FromDate, Mode=TwoWay}">
 				<DatePicker.Format>MM-dd-yyyy</DatePicker.Format>
 			</DatePicker>
 			<!-- To Date Filter -->
 			<Switch x:Name="FilterToDateSwitch" Grid.Row="2" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
-			<Label Text="To Date: " Grid.Row="2" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
-			<DatePicker x:Name="FilterToDatePicker" Grid.Row="2" Grid.Column="2" IsEnabled="{Binding Source={x:Reference Name=FilterToDateSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Date="{x:Static sys:DateTime.Now}" MaximumDate="{x:Static sys:DateTime.Now}">
+			<Label Text="To: " Grid.Row="2" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
+			<DatePicker x:Name="FilterToDatePicker" Grid.Row="2" Grid.Column="2" IsEnabled="{Binding Source={x:Reference Name=FilterToDateSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Date="{Binding ToDate, Mode=TwoWay}">
 				<DatePicker.Format>MM-dd-yyyy</DatePicker.Format>
 			</DatePicker>
 			<!-- School Filter -->
 			<Switch x:Name="FilterSchoolSwitch" Grid.Row="3" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
 			<Label Text="School: " Grid.Row="3" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
-			<Entry x:Name="FilterSchoolEntry" Grid.Row="3" Grid.Column="2" IsEnabled="{Binding Source={x:Reference Name=FilterSchoolSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			<Entry x:Name="FilterSchoolEntry" Grid.Row="3" Grid.Column="2" Text="{Binding School, Mode=TwoWay}" IsEnabled="{Binding Source={x:Reference Name=FilterSchoolSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 			<!-- Area Filter -->
 			<Switch x:Name="FilterAreaSwitch" Grid.Row="4" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
 			<Label Text="Area: " Grid.Row="4" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
-			<Picker x:Name="FilterAreaPicker" Grid.Row="4" Grid.Column="2" IsEnabled="{Binding Source={x:Reference Name=FilterAreaSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			<Picker x:Name="FilterAreaPicker" Grid.Row="4" Grid.Column="2" SelectedIndex="{Binding Area, Mode=TwoWay}" IsEnabled="{Binding Source={x:Reference Name=FilterAreaSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 			<!-- Buttons -->
 			<StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
 				<Button x:Name="FilterClearAllButton" Text="Clear All" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
@@ -46,4 +46,4 @@
 			</StackLayout>
 		</Grid>
 	</ContentPage.Content>
-</ContentPage>
+</local:FilterPageBase>
