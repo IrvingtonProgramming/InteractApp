@@ -17,6 +17,23 @@ namespace InteractApp
 			foreach (int i in AREA_CHOICES) {
 				FilterAreaPicker.Items.Add (i.ToString ());
 			}
+
+			FilterClearAllButton.Clicked += ClearAllClicked;
+		}
+
+		void ClearAllClicked (object sender, EventArgs e)
+		{
+			Switch[] switches = {
+				FilterNameSwitch,
+				FilterFromDateSwitch,
+				FilterToDateSwitch,
+				FilterSchoolSwitch,
+				FilterAreaSwitch
+			};
+
+			foreach (Switch s in switches) {
+				s.IsToggled = false;
+			}
 		}
 	}
 }
