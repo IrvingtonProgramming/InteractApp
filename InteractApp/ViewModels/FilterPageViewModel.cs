@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 
 using Xamarin.Forms;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace InteractApp
 {
@@ -59,20 +60,6 @@ namespace InteractApp
 			}
 		}
 
-		public string School {
-			get {
-				return selections.School;
-			}
-
-			set {
-				if (selections.School != value) {
-					selections.School = value;
-					selections.Save ();
-					RaisePropertyChanged ("School");
-				}
-			}
-		}
-
 		public int AreaIndex {
 			get {
 				return selections.AreaIndex;
@@ -83,6 +70,20 @@ namespace InteractApp
 					selections.AreaIndex = value;
 					selections.Save ();
 					RaisePropertyChanged ("Area");
+				}
+			}
+		}
+
+		public string School {
+			get {
+				return selections.School;
+			}
+
+			set {
+				if (selections.School != value) {
+					selections.School = value;
+					selections.Save ();
+					RaisePropertyChanged ("School");
 				}
 			}
 		}
@@ -123,18 +124,6 @@ namespace InteractApp
 			}
 		}
 
-		public bool FilterSchool {
-			get { return selections.FilterSchool; }
-
-			set {
-				if (selections.FilterSchool != value) {
-					selections.FilterSchool = value;
-					selections.Save ();
-					RaisePropertyChanged ("FilterSchool");
-				}
-			}
-		}
-
 		public bool FilterArea {
 			get { return selections.FilterArea; }
 
@@ -143,6 +132,18 @@ namespace InteractApp
 					selections.FilterArea = value;
 					selections.Save ();
 					RaisePropertyChanged ("FilterArea");
+				}
+			}
+		}
+
+		public bool FilterSchool {
+			get { return selections.FilterSchool; }
+
+			set {
+				if (selections.FilterSchool != value) {
+					selections.FilterSchool = value;
+					selections.Save ();
+					RaisePropertyChanged ("FilterSchool");
 				}
 			}
 		}
@@ -162,14 +163,14 @@ namespace InteractApp
 		public string Name;
 		public DateTime FromDate;
 		public DateTime ToDate;
-		public string School;
 		public int AreaIndex;
+		public string School;
 
 		public bool FilterName;
 		public bool FilterFromDate;
 		public bool FilterToDate;
-		public bool FilterSchool;
 		public bool FilterArea;
+		public bool FilterSchool;
 
 		public FilterOptions ()
 		{
@@ -177,7 +178,7 @@ namespace InteractApp
 			FromDate = ToDate = DateTime.Now;
 			AreaIndex = -1;
 
-			FilterName = FilterFromDate = FilterToDate = FilterSchool = FilterArea = false;
+			FilterName = FilterFromDate = FilterToDate = FilterArea = FilterSchool = false;
 		}
 
 		public void Save ()

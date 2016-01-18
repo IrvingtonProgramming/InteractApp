@@ -54,8 +54,8 @@ namespace InteractApp
 				FilterNameSwitch,
 				FilterFromDateSwitch,
 				FilterToDateSwitch,
+				FilterAreaSwitch,
 				FilterSchoolSwitch,
-				FilterAreaSwitch
 			};
 
 			foreach (Switch s in switches) {

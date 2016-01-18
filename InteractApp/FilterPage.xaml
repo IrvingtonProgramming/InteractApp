@@ -31,14 +31,14 @@
 			<DatePicker x:Name="FilterToDatePicker" Grid.Row="2" Grid.Column="2" IsEnabled="{Binding Source={x:Reference Name=FilterToDateSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Date="{Binding ToDate, Mode=TwoWay}">
 				<DatePicker.Format>MM-dd-yyyy</DatePicker.Format>
 			</DatePicker>
-			<!-- School Filter -->
-			<Switch x:Name="FilterSchoolSwitch" Grid.Row="3" Grid.Column="0" IsToggled="{Binding FilterSchool, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
-			<Label Text="School: " Grid.Row="3" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
-			<Entry x:Name="FilterSchoolEntry" Grid.Row="3" Grid.Column="2" Text="{Binding School, Mode=TwoWay}" IsEnabled="{Binding Source={x:Reference Name=FilterSchoolSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 			<!-- Area Filter -->
-			<Switch x:Name="FilterAreaSwitch" Grid.Row="4" Grid.Column="0" IsToggled="{Binding FilterArea, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
-			<Label Text="Area: " Grid.Row="4" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
-			<Picker x:Name="FilterAreaPicker" Grid.Row="4" Grid.Column="2" SelectedIndex="{Binding AreaIndex, Mode=TwoWay}" IsEnabled="{Binding Source={x:Reference Name=FilterAreaSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			<Switch x:Name="FilterAreaSwitch" Grid.Row="3" Grid.Column="0" IsToggled="{Binding FilterArea, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
+			<Label Text="Area: " Grid.Row="3" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
+			<Picker x:Name="FilterAreaPicker" Grid.Row="3" Grid.Column="2" SelectedIndex="{Binding AreaIndex, Mode=TwoWay}" IsEnabled="{Binding Source={x:Reference Name=FilterAreaSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			<!-- School Filter -->
+			<Switch x:Name="FilterSchoolSwitch" Grid.Row="4" Grid.Column="0" IsToggled="{Binding FilterSchool, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
+			<Label Text="School: " Grid.Row="4" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
+			<Entry x:Name="FilterSchoolEntry" Grid.Row="4" Grid.Column="2" Text="{Binding School, Mode=TwoWay}" IsEnabled="{Binding Source={x:Reference Name=FilterSchoolSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 			<!-- Buttons -->
 			<StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
 				<Button x:Name="FilterClearAllButton" Text="Clear All" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
