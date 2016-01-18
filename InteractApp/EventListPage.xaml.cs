@@ -47,29 +47,27 @@ namespace InteractApp
 
 		private async void Filter ()
 		{
-			string input = await OpenFilterPage (this.Navigation);
-			await DisplayAlert ("Debug", input, "Cancel");
+			FilterOptions options = await OpenFilterPage (this.Navigation);
+
+			await DisplayAlert ("Debug", options.Name, "Cancel");
 		}
 
-		public Task<string> OpenFilterPage (INavigation navigation)
+		public Task<FilterOptions> OpenFilterPage (INavigation navigation)
 		{
-			// wait in this proc, until user finishes input 
-			var tcs = new TaskCompletionSource<string> ();
+			// wait in this proc, until user finishes input
+			var tcs = new TaskCompletionSource<FilterOptions> ();
 			var page = new FilterPage ();
 
 
 			page.FindByName<Button> ("FilterApplyButton").Clicked += async (s, e) => {
-				var result = page.FindByName<Entry> ("FilterNameEntry").Text;
+				var result = page.ViewModel.selections;
 				await navigation.PopAsync ();
 				// pass result
 				tcs.SetResult (result);
 			};
 
-			// show page
 			navigation.PushAsync (page);
 
-			// code is waiting here, until result is passed with tcs.SetResult() in btn-Clicked
-			// then proc returns the result
 			return tcs.Task;
 		}
 	}
