@@ -67,6 +67,10 @@ namespace InteractApp
 		{
 			return;
 		}
+
+		protected override void OnDisappearing ()
+		{
+			Application.Current.SavePropertiesAsync ();
+		}
 	}
 }
-

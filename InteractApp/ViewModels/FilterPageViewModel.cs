@@ -184,7 +184,6 @@ namespace InteractApp
 		public void Save ()
 		{
 			Application.Current.Properties ["FilterOptions"] = SerializeUtils.SerializeToJson (this);
-			Application.Current.SavePropertiesAsync ();
 		}
 
 		public static FilterOptions Load ()
