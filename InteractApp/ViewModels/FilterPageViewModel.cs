@@ -148,15 +148,7 @@ namespace InteractApp
 			}
 		}
 
-		Command clearFiltersCommand;
-
-		public Command ClearFiltersCommand {
-			get {
-				return clearFiltersCommand ?? (clearFiltersCommand = new Command (ClearFiltersClicked));
-			}
-		}
-
-		private void ClearFiltersClicked ()
+		public void ClearFilters ()
 		{
 			FilterName =
 				FilterFromDate =
@@ -190,6 +182,12 @@ namespace InteractApp
 		public bool FilterArea;
 		public bool FilterSchool;
 
+		public bool FilterAny {
+			get {
+				return FilterName | FilterFromDate | FilterToDate | FilterArea | FilterSchool;
+			}
+		}
+
 		public FilterOptions ()
 		{
 			Name = School = "";
@@ -199,15 +197,15 @@ namespace InteractApp
 			FilterName = FilterFromDate = FilterToDate = FilterArea = FilterSchool = false;
 		}
 
-		public void Save ()
+		public void Save (string key = "FilterOptions")
 		{
-			Application.Current.Properties ["FilterOptions"] = SerializeUtils.SerializeToJson (this);
+			Application.Current.Properties [key] = SerializeUtils.SerializeToJson (this);
 		}
 
-		public static FilterOptions Load ()
+		public static FilterOptions Load (string key = "FilterOptions")
 		{
 			object o;
-			Application.Current.Properties.TryGetValue ("FilterOptions", out o);
+			Application.Current.Properties.TryGetValue (key, out o);
 			return o != null ? SerializeUtils.DeserializeFromJson (o.ToString ()) : new FilterOptions ();
 		}
 	}

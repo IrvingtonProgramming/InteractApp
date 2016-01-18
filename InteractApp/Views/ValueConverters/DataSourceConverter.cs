@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
-using System.Collections;
 using System.Globalization;
+using System.Collections;
 
 namespace InteractApp
 {
@@ -18,4 +18,3 @@ namespace InteractApp
 		}
 	}
 }
-

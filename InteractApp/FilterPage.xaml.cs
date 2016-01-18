@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
-using Android.Util;
 
 namespace InteractApp
 {

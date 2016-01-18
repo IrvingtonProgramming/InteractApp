@@ -35,7 +35,7 @@ namespace InteractApp
 			//To hide iOS list seperator 
 			EventList.SeparatorVisibility = SeparatorVisibility.None;
 
-			ViewModel.LoadAllEventsCommand.Execute (null);
+			ViewModel.LoadEvents ();
 
 			EventList.ItemTapped += async (sender, e) => {
 				Event evt = (Event)e.Item;
@@ -48,7 +48,7 @@ namespace InteractApp
 		private async void Filter ()
 		{
 			FilterOptions options = await OpenFilterPage (this.Navigation);
-			ViewModel.Filter (options);
+			ViewModel.LoadEvents (options);
 			//await DisplayAlert ("Debug", options.Name, "Cancel");
 		}
 
@@ -63,6 +63,13 @@ namespace InteractApp
 				var result = page.ViewModel.selections;
 				await navigation.PopAsync ();
 				// pass result
+				tcs.SetResult (result);
+			};
+
+			page.FindByName<Button> ("FilterClearAllButton").Clicked += async (s, e) => {
+				page.ViewModel.ClearFilters ();
+				var result = page.ViewModel.selections;
+				await navigation.PopAsync ();
 				tcs.SetResult (result);
 			};
 

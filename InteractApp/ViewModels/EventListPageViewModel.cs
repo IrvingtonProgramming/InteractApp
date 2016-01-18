@@ -45,37 +45,77 @@ namespace InteractApp
 			}
 		}
 
-		private Command loadAllEventsCommand;
+		private async Task<List<Event>> GetAllEvents ()
+		{
+			try {
+				return await App.EventManager.GetEventsAsync ();
+			} catch (Exception e) {
+				if (e.StackTrace.Contains ("HttpWebRequest")) {
+					return new List<Event> () { Event.newErrorEvent ("A network error has occurred. Please check your network connection.") };
+				} else {
+					return new List<Event> () { Event.newErrorEvent ("Exception while loading data. Please try again or contact Interact Club.\n\n" + e.StackTrace) };
+				}
+			}
+		}
 
-		public Command LoadAllEventsCommand {
+		private Command refreshListCommand;
+
+		public Command RefreshListCommand {
 			get { 
-				return loadAllEventsCommand ?? (loadAllEventsCommand = new Command (ExecuteLoadEventsCommand, () => {
+				return refreshListCommand ?? (refreshListCommand = new Command (ExecuteRefreshListCommand, () => {
 					return !IsRefreshing;
 				})); 
 			}
 		}
 
-		private async void ExecuteLoadEventsCommand ()
+		private async void ExecuteRefreshListCommand ()
 		{
 			if (IsRefreshing)
 				return;
 
 			IsRefreshing = true;
-			LoadAllEventsCommand.ChangeCanExecute ();
+			RefreshListCommand.ChangeCanExecute ();
 
-			try {
-				Items = await App.EventManager.GetEventsAsync ();
-			} catch (Exception e) {
-				if (e.StackTrace.Contains ("HttpWebRequest")) {
-					Items = new List<Event> () { Event.newErrorEvent ("A network error has occurred. Please check your network connection.") };
-				} else {
-					Items = new List<Event> () { Event.newErrorEvent ("Exception while loading data. Please try again or contact Interact Club.\n\n" + e.StackTrace) };
+			await LoadEvents (appliedFilterOptions);
+
+			IsRefreshing = false;
+			RefreshListCommand.ChangeCanExecute ();
+		}
+
+		private static FilterOptions appliedFilterOptions;
+
+		public async Task LoadEvents (FilterOptions options = null)
+		{
+			IsLoading = true;
+
+			IEnumerable<Event> filteredEvents = await GetAllEvents ();
+			appliedFilterOptions = options;
+
+			if (options != null && options.FilterAny) {
+				if (options.FilterName) {
+					filteredEvents = filteredEvents.Where (e => e.Name.Contains (options.Name));
+				}
+
+				if (options.FilterFromDate) {
+					filteredEvents = filteredEvents.Where (e => DateTime.Compare (options.FromDate, e.Date.Date) <= 0);
+				}
+
+				if (options.FilterToDate) {
+					filteredEvents = filteredEvents.Where (e => DateTime.Compare (e.Date.Date, options.ToDate) <= 0);
+				}
+
+				if (options.FilterArea) {
+					filteredEvents = filteredEvents.Where (e => e.Areas.Contains (options.AreaIndex + 1));
+				}
+
+				if (options.FilterSchool) {
+					filteredEvents = filteredEvents.Where (e => e.School.Contains (options.School));
 				}
 			}
 
-			IsRefreshing = false;
+			Items = filteredEvents.ToList ();
+
 			IsLoading = false;
-			LoadAllEventsCommand.ChangeCanExecute ();
 		}
 
 		private List<Event> _items;
@@ -91,17 +131,6 @@ namespace InteractApp
 					RaisePropertyChanged ("Items");
 				}
 			}
-		}
-
-		public void Filter (FilterOptions options)
-		{
-			IsLoading = true;
-
-			if (options.FilterName) {
-				Items = Items.Where (e => e.Name.Contains (options.Name)).ToList ();
-			}
-				
-			IsLoading = false;
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
