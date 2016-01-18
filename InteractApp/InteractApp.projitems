@@ -37,6 +37,7 @@
       <DependentUpon>FilterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FilterPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ValueConverters\DataSourceConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)EventListPage.xaml">

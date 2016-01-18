@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace InteractApp
 {
@@ -88,6 +91,17 @@ namespace InteractApp
 					RaisePropertyChanged ("Items");
 				}
 			}
+		}
+
+		public void Filter (FilterOptions options)
+		{
+			IsLoading = true;
+
+			if (options.FilterName) {
+				Items = Items.Where (e => e.Name.Contains (options.Name)).ToList ();
+			}
+				
+			IsLoading = false;
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

@@ -3,6 +3,7 @@
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<local:BooleanNegationConverter x:Key="not" />
+			<local:DataSourceConverter x:Key="empty" />
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	<ContentPage.Content>
@@ -15,6 +16,7 @@
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
+			<Label Text="No Events!" XAlign="Center" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" IsVisible="{Binding Items, Converter={StaticResource empty}}" />
 		</Grid>
 	</ContentPage.Content>
 </local:EventListPageBase>

@@ -48,8 +48,8 @@ namespace InteractApp
 		private async void Filter ()
 		{
 			FilterOptions options = await OpenFilterPage (this.Navigation);
-
-			await DisplayAlert ("Debug", options.Name, "Cancel");
+			ViewModel.Filter (options);
+			//await DisplayAlert ("Debug", options.Name, "Cancel");
 		}
 
 		public Task<FilterOptions> OpenFilterPage (INavigation navigation)
