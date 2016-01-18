@@ -2,12 +2,13 @@
 using System.ComponentModel;
 
 using Xamarin.Forms;
-using System.Windows.Input;
 
 namespace InteractApp
 {
 	public class FilterPageViewModel : INotifyPropertyChanged, IViewModel
 	{
+		public FilterOptions selections;
+
 		public FilterPageViewModel ()
 		{
 		}
@@ -115,5 +116,40 @@ namespace InteractApp
 		public static readonly string SCHOOL = "School";
 		public static readonly string AREA = "Area";
 	}
-}
 
+	public sealed class FilterOptions
+	{
+		public string Name;
+		public DateTime FromDate;
+		public DateTime ToDate;
+		public string School;
+		public int AreaIndex;
+
+		public bool FilterName;
+		public bool FilterFromDate;
+		public bool FilterToDate;
+		public bool FilterSchool;
+		public bool FilterArea;
+
+		public FilterOptions ()
+		{
+			Name = School = "";
+			FromDate = ToDate = DateTime.Now;
+			AreaIndex = -1;
+
+			FilterName = FilterFromDate = FilterToDate = FilterSchool = FilterArea = false;
+		}
+
+		public void save ()
+		{
+			Application.Current.Properties ["FilterOptions"] = this;
+		}
+
+		public static FilterOptions load ()
+		{
+			object o;
+			Application.Current.Properties.TryGetValue ("FilterOptions", out o);
+			return (FilterOptions)(o ?? new FilterOptions ());
+		}
+	}
+}
