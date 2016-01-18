@@ -44,23 +44,7 @@ namespace InteractApp
 				FilterAreaPicker,
 			};
 
-			FilterClearAllButton.Clicked += ClearAllClicked;
 			FilterApplyButton.Clicked += ApplyClicked;
-		}
-
-		void ClearAllClicked (object sender, EventArgs e)
-		{
-			Switch[] switches = {
-				FilterNameSwitch,
-				FilterFromDateSwitch,
-				FilterToDateSwitch,
-				FilterAreaSwitch,
-				FilterSchoolSwitch,
-			};
-
-			foreach (Switch s in switches) {
-				s.IsToggled = false;
-			}
 		}
 
 		void ApplyClicked (Object sender, EventArgs e)

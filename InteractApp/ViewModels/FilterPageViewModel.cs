@@ -148,6 +148,24 @@ namespace InteractApp
 			}
 		}
 
+		Command clearFiltersCommand;
+
+		public Command ClearFiltersCommand {
+			get {
+				return clearFiltersCommand ?? (clearFiltersCommand = new Command (ClearFiltersClicked));
+			}
+		}
+
+		private void ClearFiltersClicked ()
+		{
+			FilterName =
+				FilterFromDate =
+					FilterToDate =
+						FilterArea =
+							FilterSchool =
+								false;
+		}
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		public void RaisePropertyChanged (string propName)

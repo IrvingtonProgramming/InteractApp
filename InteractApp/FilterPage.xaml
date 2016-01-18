@@ -41,7 +41,7 @@
 			<Entry x:Name="FilterSchoolEntry" Grid.Row="4" Grid.Column="2" Text="{Binding School, Mode=TwoWay}" IsEnabled="{Binding Source={x:Reference Name=FilterSchoolSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 			<!-- Buttons -->
 			<StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
-				<Button x:Name="FilterClearAllButton" Text="Clear All" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+				<Button x:Name="FilterClearAllButton" Text="Clear All" Command="{Binding ClearFiltersCommand}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 				<Button x:Name="FilterApplyButton" Text="Apply" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 			</StackLayout>
 		</Grid>
