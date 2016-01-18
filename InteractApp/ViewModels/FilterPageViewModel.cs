@@ -1,7 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 
+using Newtonsoft.Json;
+
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace InteractApp
 {
@@ -11,20 +14,18 @@ namespace InteractApp
 
 		public FilterPageViewModel ()
 		{
+			selections = FilterOptions.Load ();
 		}
 
 		public string Name {
 			get {
-				object v;
-				Application.Current.Properties.TryGetValue (Key.NAME, out v);
-				return (string)v;
+				return selections.Name;
 			}
 
 			set {
-				object v;
-				Application.Current.Properties.TryGetValue (Key.NAME, out v);
-				if ((string)v != value) {
-					Application.Current.Properties [Key.NAME] = value;
+				if (selections.Name != value) {
+					selections.Name = value;
+					selections.Save ();
 					RaisePropertyChanged ("Name");
 				}
 			}
@@ -32,16 +33,13 @@ namespace InteractApp
 
 		public DateTime FromDate {
 			get {
-				object v;
-				Application.Current.Properties.TryGetValue (Key.FROM_DATE, out v);
-				return (DateTime)((v) ?? DateTime.Now);
+				return selections.FromDate;
 			}
 
 			set {
-				object v;
-				Application.Current.Properties.TryGetValue (Key.FROM_DATE, out v);
-				if (((DateTime)((v) ?? DateTime.Now)) != value) {
-					Application.Current.Properties [Key.FROM_DATE] = value;
+				if (selections.FromDate != value) {
+					selections.FromDate = value;
+					selections.Save ();
 					RaisePropertyChanged ("FromDate");
 				}
 			}
@@ -49,16 +47,13 @@ namespace InteractApp
 
 		public DateTime ToDate {
 			get {
-				object v;
-				Application.Current.Properties.TryGetValue (Key.TO_DATE, out v);
-				return (DateTime)((v) ?? DateTime.Now);
+				return selections.ToDate;
 			}
 
 			set {
-				object v;
-				Application.Current.Properties.TryGetValue (Key.TO_DATE, out v);
-				if (((DateTime)((v) ?? DateTime.Now)) != value) {
-					Application.Current.Properties [Key.TO_DATE] = value;
+				if (selections.ToDate != value) {
+					selections.ToDate = value;
+					selections.Save ();
 					RaisePropertyChanged ("ToDate");
 				}
 			}
@@ -66,34 +61,88 @@ namespace InteractApp
 
 		public string School {
 			get {
-				object v;
-				Application.Current.Properties.TryGetValue (Key.SCHOOL, out v);
-				return (string)v;
+				return selections.School;
 			}
 
 			set {
-				object v;
-				Application.Current.Properties.TryGetValue (Key.SCHOOL, out v);
-				if ((string)v != value) {
-					Application.Current.Properties [Key.SCHOOL] = value;
+				if (selections.School != value) {
+					selections.School = value;
+					selections.Save ();
 					RaisePropertyChanged ("School");
 				}
 			}
 		}
 
-		public int Area {
+		public int AreaIndex {
 			get {
-				object v;
-				Application.Current.Properties.TryGetValue (Key.AREA, out v);
-				return (int)(v ?? -1);
+				return selections.AreaIndex;
 			}
 
 			set {
-				object v;
-				Application.Current.Properties.TryGetValue (Key.AREA, out v);
-				if (((int)(v ?? -1)) != value) {
-					Application.Current.Properties [Key.AREA] = value;
+				if (selections.AreaIndex != value) {
+					selections.AreaIndex = value;
+					selections.Save ();
 					RaisePropertyChanged ("Area");
+				}
+			}
+		}
+
+		public bool FilterName {
+			get { return selections.FilterName; }
+
+			set {
+				if (selections.FilterName != value) {
+					selections.FilterName = value;
+					selections.Save ();
+					RaisePropertyChanged ("FilterName");
+				}
+			}
+		}
+
+		public bool FilterFromDate {
+			get { return selections.FilterFromDate; }
+
+			set {
+				if (selections.FilterFromDate != value) {
+					selections.FilterFromDate = value;
+					selections.Save ();
+					RaisePropertyChanged ("FilterFromDate");
+				}
+			}
+		}
+
+		public bool FilterToDate {
+			get { return selections.FilterToDate; }
+
+			set {
+				if (selections.FilterToDate != value) {
+					selections.FilterToDate = value;
+					selections.Save ();
+					RaisePropertyChanged ("FilterToDate");
+				}
+			}
+		}
+
+		public bool FilterSchool {
+			get { return selections.FilterSchool; }
+
+			set {
+				if (selections.FilterSchool != value) {
+					selections.FilterSchool = value;
+					selections.Save ();
+					RaisePropertyChanged ("FilterSchool");
+				}
+			}
+		}
+
+		public bool FilterArea {
+			get { return selections.FilterArea; }
+
+			set {
+				if (selections.FilterArea != value) {
+					selections.FilterArea = value;
+					selections.Save ();
+					RaisePropertyChanged ("FilterArea");
 				}
 			}
 		}
@@ -106,15 +155,6 @@ namespace InteractApp
 				PropertyChanged (this, new PropertyChangedEventArgs (propName));
 			}
 		}
-	}
-
-	public sealed class Key
-	{
-		public static readonly string NAME = "Name";
-		public static readonly string FROM_DATE = "FromDate";
-		public static readonly string TO_DATE = "ToDate";
-		public static readonly string SCHOOL = "School";
-		public static readonly string AREA = "Area";
 	}
 
 	public sealed class FilterOptions
@@ -140,16 +180,40 @@ namespace InteractApp
 			FilterName = FilterFromDate = FilterToDate = FilterSchool = FilterArea = false;
 		}
 
-		public void save ()
+		public void Save ()
 		{
-			Application.Current.Properties ["FilterOptions"] = this;
+			Application.Current.Properties ["FilterOptions"] = SerializeUtils.SerializeToJson (this);
+			Application.Current.SavePropertiesAsync ();
 		}
 
-		public static FilterOptions load ()
+		public static FilterOptions Load ()
 		{
 			object o;
 			Application.Current.Properties.TryGetValue ("FilterOptions", out o);
-			return (FilterOptions)(o ?? new FilterOptions ());
+			return o != null ? SerializeUtils.DeserializeFromJson (o.ToString ()) : new FilterOptions ();
+		}
+	}
+
+	public static class SerializeUtils
+	{
+		public static string SerializeToJson (object obj)
+		{
+			try {
+				return JsonConvert.SerializeObject (obj);
+			} catch (Exception ex) {
+				Debug.WriteLine ("Error in serializing filter selections: " + ex.StackTrace);
+				return "";
+			}
+		}
+
+		public static FilterOptions DeserializeFromJson (string jsonObj)
+		{
+			try {
+				return JsonConvert.DeserializeObject<FilterOptions> (jsonObj);
+			} catch (Exception ex) {
+				Debug.WriteLine ("Error in deserializing filter selections: " + ex.StackTrace);
+				return new FilterOptions ();
+			}
 		}
 	}
 }

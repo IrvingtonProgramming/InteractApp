@@ -28,7 +28,7 @@ namespace InteractApp
 				FilterAreaPicker.Items.Add (i.ToString ());
 			}
 			// Have to set index AFTER picker has been populated
-			FilterAreaPicker.SelectedIndex = (int)Application.Current.Properties [Key.AREA];
+			FilterAreaPicker.SelectedIndex = ViewModel.AreaIndex;
 
 			Entries = new [] {
 				FilterNameEntry,
