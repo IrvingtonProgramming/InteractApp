@@ -9,6 +9,7 @@
 				<RowDefinition Height="auto" />
 				<RowDefinition Height="auto" />
 				<RowDefinition Height="auto" />
+				<RowDefinition Height="auto" />
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="auto" />
@@ -34,13 +35,17 @@
 			<!-- Area Filter -->
 			<Switch x:Name="FilterAreaSwitch" Grid.Row="3" Grid.Column="0" IsToggled="{Binding FilterArea, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
 			<Label Text="Area: " Grid.Row="3" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
-			<Picker x:Name="FilterAreaPicker" Grid.Row="3" Grid.Column="2" SelectedIndex="{Binding AreaIndex, Mode=TwoWay}" IsEnabled="{Binding Source={x:Reference Name=FilterAreaSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			<local:BindablePicker x:Name="FilterAreaPicker" Grid.Row="3" Grid.Column="2" SelectedIndex="{Binding AreaIndex, Mode=TwoWay}" SelectedItem="{Binding Area, Mode=TwoWay}" ItemsSource="{Binding AreaChoices}" IsEnabled="{Binding Source={x:Reference Name=FilterAreaSwitch}, Path=IsToggled}" Title="Select" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 			<!-- School Filter -->
 			<Switch x:Name="FilterSchoolSwitch" Grid.Row="4" Grid.Column="0" IsToggled="{Binding FilterSchool, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
 			<Label Text="School: " Grid.Row="4" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
 			<Entry x:Name="FilterSchoolEntry" Grid.Row="4" Grid.Column="2" Text="{Binding School, Mode=TwoWay}" IsEnabled="{Binding Source={x:Reference Name=FilterSchoolSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			<!-- Tag Filter -->
+			<Switch x:Name="FilterTagSwitch" Grid.Row="5" Grid.Column="0" IsToggled="{Binding FilterTag, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
+			<Label Text="Tag: " Grid.Row="5" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
+			<local:BindablePicker x:Name="FilterTagPicker" Grid.Row="5" Grid.Column="2" SelectedIndex="{Binding TagIndex, Mode=TwoWay}" SelectedItem="{Binding Tag, Mode=TwoWay}" ItemsSource="{Binding TagChoices}" IsEnabled="{Binding Source={x:Reference Name=FilterTagSwitch}, Path=IsToggled}" Title="Select" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 			<!-- Buttons -->
-			<StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+			<StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
 				<Button x:Name="FilterClearAllButton" Text="Clear All" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 				<Button x:Name="FilterApplyButton" Text="Apply" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 			</StackLayout>

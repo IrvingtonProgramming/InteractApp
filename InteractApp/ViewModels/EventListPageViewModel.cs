@@ -45,10 +45,41 @@ namespace InteractApp
 			}
 		}
 
-		private async Task<List<Event>> GetAllEvents ()
+		private List<Event> _items;
+
+		public List<Event> Items {
+			get {
+				return _items;
+			}
+
+			private set {
+				if (_items != value) {
+					_items = value;
+					RaisePropertyChanged ("Items");
+				}
+			}
+		}
+
+		private List<Event> _allEvents;
+
+		public List<Event> AllEvents {
+			get {
+				return _allEvents;
+			}
+
+			private set {
+				if (_allEvents != value) {
+					_allEvents = value;
+					RaisePropertyChanged ("AllEvents");
+				}
+			}
+		}
+
+		public async Task<List<Event>> GetAllEvents ()
 		{
 			try {
-				return await App.EventManager.GetEventsAsync ();
+				AllEvents = await App.EventManager.GetEventsAsync ();
+				return AllEvents;
 			} catch (Exception e) {
 				if (e.StackTrace.Contains ("HttpWebRequest")) {
 					return new List<Event> () { Event.newErrorEvent ("A network error has occurred. Please check your network connection.") };
@@ -104,33 +135,22 @@ namespace InteractApp
 					filteredEvents = filteredEvents.Where (e => DateTime.Compare (e.Date.Date, options.ToDate) <= 0);
 				}
 
-				if (options.FilterArea) {
-					filteredEvents = filteredEvents.Where (e => e.Areas.Contains (options.AreaIndex + 1));
+				if (options.FilterArea && options.Area != -1) {
+					filteredEvents = filteredEvents.Where (e => e.Areas.Contains (options.Area));
 				}
 
 				if (options.FilterSchool) {
 					filteredEvents = filteredEvents.Where (e => e.School.Contains (options.School));
+				}
+
+				if (options.FilterTag && !String.IsNullOrEmpty (options.Tag)) {
+					filteredEvents = filteredEvents.Where (e => e.Tags.Contains (options.Tag));
 				}
 			}
 
 			Items = filteredEvents.ToList ();
 
 			IsLoading = false;
-		}
-
-		private List<Event> _items;
-
-		public List<Event> Items {
-			get {
-				return _items;
-			}
-
-			private set {
-				if (_items != value) {
-					_items = value;
-					RaisePropertyChanged ("Items");
-				}
-			}
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

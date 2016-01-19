@@ -49,18 +49,17 @@ namespace InteractApp
 		{
 			FilterOptions options = await OpenFilterPage (this.Navigation);
 			ViewModel.LoadEvents (options);
-			//await DisplayAlert ("Debug", options.Name, "Cancel");
 		}
 
 		public Task<FilterOptions> OpenFilterPage (INavigation navigation)
 		{
 			// wait in this proc, until user finishes input
 			var tcs = new TaskCompletionSource<FilterOptions> ();
-			var page = new FilterPage ();
+			var page = new FilterPage (ViewModel.AllEvents);
 
 
 			page.FindByName<Button> ("FilterApplyButton").Clicked += async (s, e) => {
-				var result = page.ViewModel.selections;
+				var result = page.ViewModel.Selections;
 				await navigation.PopAsync ();
 				// pass result
 				tcs.SetResult (result);
@@ -68,7 +67,7 @@ namespace InteractApp
 
 			page.FindByName<Button> ("FilterClearAllButton").Clicked += async (s, e) => {
 				page.ViewModel.ClearFilters ();
-				var result = page.ViewModel.selections;
+				var result = page.ViewModel.Selections;
 				await navigation.PopAsync ();
 				tcs.SetResult (result);
 			};

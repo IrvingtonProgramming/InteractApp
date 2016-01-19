@@ -1,32 +1,48 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Collections.Generic;
+using System.Linq;
 
 using Newtonsoft.Json;
 
 using Xamarin.Forms;
-using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace InteractApp
 {
 	public class FilterPageViewModel : INotifyPropertyChanged, IViewModel
 	{
-		public FilterOptions selections;
+		public FilterOptions Selections;
+
 
 		public FilterPageViewModel ()
 		{
-			selections = FilterOptions.Load ();
+			Selections = FilterOptions.Load ();
+		}
+
+		public int[] AreaChoices {
+			get {
+				return new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+			}
+		}
+
+		List<string> _tagChoices = new List<string> ();
+
+		public List<string> TagChoices {
+			get {
+				return _tagChoices;
+			}
 		}
 
 		public string Name {
 			get {
-				return selections.Name;
+				return Selections.Name;
 			}
 
 			set {
-				if (selections.Name != value) {
-					selections.Name = value;
-					selections.Save ();
+				if (Selections.Name != value) {
+					Selections.Name = value;
+					Selections.Save ();
 					RaisePropertyChanged ("Name");
 				}
 			}
@@ -34,13 +50,13 @@ namespace InteractApp
 
 		public DateTime FromDate {
 			get {
-				return selections.FromDate;
+				return Selections.FromDate;
 			}
 
 			set {
-				if (selections.FromDate != value) {
-					selections.FromDate = value;
-					selections.Save ();
+				if (Selections.FromDate != value) {
+					Selections.FromDate = value;
+					Selections.Save ();
 					RaisePropertyChanged ("FromDate");
 				}
 			}
@@ -48,13 +64,13 @@ namespace InteractApp
 
 		public DateTime ToDate {
 			get {
-				return selections.ToDate;
+				return Selections.ToDate;
 			}
 
 			set {
-				if (selections.ToDate != value) {
-					selections.ToDate = value;
-					selections.Save ();
+				if (Selections.ToDate != value) {
+					Selections.ToDate = value;
+					Selections.Save ();
 					RaisePropertyChanged ("ToDate");
 				}
 			}
@@ -62,13 +78,27 @@ namespace InteractApp
 
 		public int AreaIndex {
 			get {
-				return selections.AreaIndex;
+				return Selections.AreaIndex;
 			}
 
 			set {
-				if (selections.AreaIndex != value) {
-					selections.AreaIndex = value;
-					selections.Save ();
+				if (Selections.AreaIndex != value) {
+					Selections.AreaIndex = value;
+					Selections.Save ();
+					RaisePropertyChanged ("AreaIndex");
+				}
+			}
+		}
+
+		public int Area {
+			get {
+				return Selections.Area;
+			}
+
+			set {
+				if (Selections.Area != value) {
+					Selections.Area = value;
+					Selections.Save ();
 					RaisePropertyChanged ("Area");
 				}
 			}
@@ -76,74 +106,114 @@ namespace InteractApp
 
 		public string School {
 			get {
-				return selections.School;
+				return Selections.School;
 			}
 
 			set {
-				if (selections.School != value) {
-					selections.School = value;
-					selections.Save ();
+				if (Selections.School != value) {
+					Selections.School = value;
+					Selections.Save ();
 					RaisePropertyChanged ("School");
 				}
 			}
 		}
 
-		public bool FilterName {
-			get { return selections.FilterName; }
+		public int TagIndex {
+			get {
+				return Selections.TagIndex;
+			}
 
 			set {
-				if (selections.FilterName != value) {
-					selections.FilterName = value;
-					selections.Save ();
+				if (Selections.TagIndex != value) {
+					Selections.TagIndex = value;
+					Selections.Save ();
+					RaisePropertyChanged ("TagIndex");
+				}
+			}
+		}
+
+		public string Tag {
+			get {
+				return Selections.Tag;
+			}
+
+			set {
+				if (Selections.Tag != value) {
+					Selections.Tag = value;
+					Selections.Save ();
+					RaisePropertyChanged ("Tag");
+				}
+			}
+		}
+
+		public bool FilterName {
+			get { return Selections.FilterName; }
+
+			set {
+				if (Selections.FilterName != value) {
+					Selections.FilterName = value;
+					Selections.Save ();
 					RaisePropertyChanged ("FilterName");
 				}
 			}
 		}
 
 		public bool FilterFromDate {
-			get { return selections.FilterFromDate; }
+			get { return Selections.FilterFromDate; }
 
 			set {
-				if (selections.FilterFromDate != value) {
-					selections.FilterFromDate = value;
-					selections.Save ();
+				if (Selections.FilterFromDate != value) {
+					Selections.FilterFromDate = value;
+					Selections.Save ();
 					RaisePropertyChanged ("FilterFromDate");
 				}
 			}
 		}
 
 		public bool FilterToDate {
-			get { return selections.FilterToDate; }
+			get { return Selections.FilterToDate; }
 
 			set {
-				if (selections.FilterToDate != value) {
-					selections.FilterToDate = value;
-					selections.Save ();
+				if (Selections.FilterToDate != value) {
+					Selections.FilterToDate = value;
+					Selections.Save ();
 					RaisePropertyChanged ("FilterToDate");
 				}
 			}
 		}
 
 		public bool FilterArea {
-			get { return selections.FilterArea; }
+			get { return Selections.FilterArea; }
 
 			set {
-				if (selections.FilterArea != value) {
-					selections.FilterArea = value;
-					selections.Save ();
+				if (Selections.FilterArea != value) {
+					Selections.FilterArea = value;
+					Selections.Save ();
 					RaisePropertyChanged ("FilterArea");
 				}
 			}
 		}
 
 		public bool FilterSchool {
-			get { return selections.FilterSchool; }
+			get { return Selections.FilterSchool; }
 
 			set {
-				if (selections.FilterSchool != value) {
-					selections.FilterSchool = value;
-					selections.Save ();
+				if (Selections.FilterSchool != value) {
+					Selections.FilterSchool = value;
+					Selections.Save ();
 					RaisePropertyChanged ("FilterSchool");
+				}
+			}
+		}
+
+		public bool FilterTag {
+			get { return Selections.FilterTag; }
+
+			set {
+				if (Selections.FilterTag != value) {
+					Selections.FilterTag = value;
+					Selections.Save ();
+					RaisePropertyChanged ("FilterTag");
 				}
 			}
 		}
@@ -155,7 +225,20 @@ namespace InteractApp
 					FilterToDate =
 						FilterArea =
 							FilterSchool =
-								false;
+								FilterTag =
+									false;
+		}
+
+		public void GenerateTags (List<Event> events)
+		{
+			foreach (Event e in events) {
+				foreach (string t in e.Tags) {
+					if (!_tagChoices.Contains (t)) {
+						_tagChoices.Add (t);
+					}
+				}
+			}
+			_tagChoices = _tagChoices.OrderBy (t => t).ToList ();
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -174,27 +257,31 @@ namespace InteractApp
 		public DateTime FromDate;
 		public DateTime ToDate;
 		public int AreaIndex;
+		public int Area;
 		public string School;
+		public int TagIndex;
+		public string Tag;
 
 		public bool FilterName;
 		public bool FilterFromDate;
 		public bool FilterToDate;
 		public bool FilterArea;
 		public bool FilterSchool;
+		public bool FilterTag;
 
 		public bool FilterAny {
 			get {
-				return FilterName | FilterFromDate | FilterToDate | FilterArea | FilterSchool;
+				return FilterName | FilterFromDate | FilterToDate | FilterArea | FilterSchool | FilterTag;
 			}
 		}
 
 		public FilterOptions ()
 		{
-			Name = School = "";
+			Name = School = Tag = "";
 			FromDate = ToDate = DateTime.Now;
-			AreaIndex = -1;
+			AreaIndex = Area = TagIndex = -1;
 
-			FilterName = FilterFromDate = FilterToDate = FilterArea = FilterSchool = false;
+			FilterName = FilterFromDate = FilterToDate = FilterArea = FilterSchool = FilterTag = false;
 		}
 
 		public void Save (string key = "FilterOptions")

@@ -38,6 +38,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FilterPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ValueConverters\DataSourceConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\BindablePicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)EventListPage.xaml">
