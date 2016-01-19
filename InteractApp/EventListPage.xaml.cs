@@ -1,10 +1,8 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
 using InteractApp;
-using System.Threading.Tasks;
 
 namespace InteractApp
 {
