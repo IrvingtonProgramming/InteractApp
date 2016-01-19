@@ -19,9 +19,9 @@
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
 					<Label Grid.Row="0" Grid.Column="0" Text="Date:" TextColor="{x:Static local:ColorResources.InteractColor}" FontSize="Medium" FontAttributes="Bold" YAlign="Center" />
-					<Label Grid.Row="1" Grid.Column="0" Text="Location:" TextColor="{x:Static local:ColorResources.InteractColor}" FontSize="Medium" FontAttributes="Bold" YAlign="Center" />
-					<Label Grid.Row="0" Grid.Column="1" Text="{Binding E.Date, StringFormat='{0:f}'}" FontSize="Small" HorizontalOptions="FillAndExpand" XAlign="Center" YAlign="Center" LineBreakMode="TailTruncation" />
-					<Label Grid.Row="1" Grid.Column="1" Text="{Binding E.Location}" FontSize="Small" HorizontalOptions="FillAndExpand" XAlign="Center" YAlign="Center" LineBreakMode="TailTruncation" />
+					<Label Grid.Row="1" Grid.Column="0" Text="Areas &amp; School:" TextColor="{x:Static local:ColorResources.InteractColor}" FontSize="Medium" FontAttributes="Bold" YAlign="Center" />
+					<Label Grid.Row="0" Grid.Column="1" Text="{Binding E.Date, StringFormat='{0:f}'}" FontSize="Small" HorizontalOptions="FillAndExpand" XAlign="Center" YAlign="Center" />
+					<Label Grid.Row="1" Grid.Column="1" Text="{Binding E.AreasSchool}" FontSize="Small" HorizontalOptions="FillAndExpand" XAlign="Center" YAlign="Center" LineBreakMode="TailTruncation" />
 				</Grid>
 				<BoxView Color="{x:Static local:ColorResources.InteractColor}" HeightRequest="2" />
 				<Label Text="Event Description" Font="20" TextColor="{x:Static local:ColorResources.InteractColor}" FontAttributes="Bold" />

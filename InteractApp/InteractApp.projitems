@@ -33,6 +33,12 @@
       <DependentUpon>MyInfoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EventInfoPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FilterPage.xaml.cs">
+      <DependentUpon>FilterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FilterPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ValueConverters\DataSourceConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\BindablePicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)EventListPage.xaml">
@@ -45,6 +51,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MyInfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)FilterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

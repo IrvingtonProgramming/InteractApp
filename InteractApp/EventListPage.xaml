@@ -3,22 +3,20 @@
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<local:BooleanNegationConverter x:Key="not" />
+			<local:DataSourceConverter x:Key="empty" />
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	<ContentPage.Content>
-		<xlabs:PopupLayout x:Name="PopupLayout">
-			<xlabs:PopupLayout.Content>
-				<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-					<ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" Color="{x:Static local:ColorResources.ActivityIndicator}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-					<ListView x:Name="EventList" RowHeight="150" ItemsSource="{Binding Items}" IsVisible="{Binding IsLoading, Converter={StaticResource not}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding LoadEventsCommand}" IsRefreshing="{Binding IsRefreshing, Mode=OneWay}">
-						<ListView.ItemTemplate>
-							<DataTemplate>
-								<local:CustomEventCell />
-							</DataTemplate>
-						</ListView.ItemTemplate>
-					</ListView>
-				</Grid>
-			</xlabs:PopupLayout.Content>
-		</xlabs:PopupLayout>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" Color="{x:Static local:ColorResources.ActivityIndicator}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+			<ListView x:Name="EventList" RowHeight="150" ItemsSource="{Binding Items}" IsVisible="{Binding IsLoading, Converter={StaticResource not}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshListCommand}" IsRefreshing="{Binding IsRefreshing, Mode=OneWay}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<local:CustomEventCell />
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			<Label Text="No Events!" XAlign="Center" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" IsVisible="{Binding Items, Converter={StaticResource empty}}" />
+		</Grid>
 	</ContentPage.Content>
 </local:EventListPageBase>

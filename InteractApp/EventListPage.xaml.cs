@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Xamarin.Forms;
 
 using InteractApp;
+using System.Threading.Tasks;
 
 namespace InteractApp
 {
@@ -24,22 +25,17 @@ namespace InteractApp
 //				Command = new Command (() => Navigation.PushAsync (new MyInfoPage ())),
 //			});
 
-//			ToolbarItems.Add (new ToolbarItem {
-//				Text = "My Events",
-//				Order = ToolbarItemOrder.Primary,
-//			});
-
-//			ToolbarItems.Add (new ToolbarItem {
-//				Text = "Filter",
-//				Icon = "ic_filter.png",
-//				Order = ToolbarItemOrder.Primary,
-//				Command = new Command (this.Filter),
-//			});
+			ToolbarItems.Add (new ToolbarItem {
+				Text = "Filter",
+				Icon = "ic_filter.png",
+				Order = ToolbarItemOrder.Primary,
+				Command = new Command (this.Filter),
+			});
 
 			//To hide iOS list seperator 
 			EventList.SeparatorVisibility = SeparatorVisibility.None;
 
-			ViewModel.LoadEventsCommand.Execute (null);
+			ViewModel.LoadEvents ();
 
 			EventList.ItemTapped += async (sender, e) => {
 				Event evt = (Event)e.Item;
@@ -51,24 +47,34 @@ namespace InteractApp
 
 		private async void Filter ()
 		{
-			var action = await DisplayActionSheet ("Filter:", "OK", "Clear all", "Name", "Date", "Tag");
-			Debug.WriteLine ("Action: " + action);
-			switch (action) {
+			FilterOptions options = await OpenFilterPage (this.Navigation);
+			ViewModel.LoadEvents (options);
+		}
 
-			case "Clear all":
-				ViewModel.LoadEventsCommand.Execute (null);
-				break;
-			
-			case "Name":
-				break;
+		public Task<FilterOptions> OpenFilterPage (INavigation navigation)
+		{
+			// wait in this proc, until user finishes input
+			var tcs = new TaskCompletionSource<FilterOptions> ();
+			var page = new FilterPage (ViewModel.AllEvents);
 
-			case "Date":
-				break;
 
-			case "Tag":
-				break;
+			page.FindByName<Button> ("FilterApplyButton").Clicked += async (s, e) => {
+				var result = page.ViewModel.Selections;
+				await navigation.PopAsync ();
+				// pass result
+				tcs.SetResult (result);
+			};
 
-			}
+			page.FindByName<Button> ("FilterClearAllButton").Clicked += async (s, e) => {
+				page.ViewModel.ClearFilters ();
+				var result = page.ViewModel.Selections;
+				await navigation.PopAsync ();
+				tcs.SetResult (result);
+			};
+
+			navigation.PushAsync (page);
+
+			return tcs.Task;
 		}
 	}
 }
