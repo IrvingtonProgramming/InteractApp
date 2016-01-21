@@ -2,6 +2,7 @@
 using System.Collections;
 
 using Xamarin.Forms;
+using System.Collections.Specialized;
 
 namespace InteractApp
 {
@@ -13,7 +14,7 @@ namespace InteractApp
 		}
 
 		public static BindableProperty ItemsSourceProperty =
-			BindableProperty.Create<BindablePicker, IList> (o => o.ItemsSource, default(IList), propertyChanged: OnItemsSourceChanged);
+			BindableProperty.Create<BindablePicker, IEnumerable> (o => o.ItemsSource, default(IEnumerable), propertyChanged: OnItemsSourceChanged);
 
 		public static BindableProperty SelectedItemProperty =
 			BindableProperty.Create<BindablePicker, object> (o => o.SelectedItem, default(object));
@@ -21,31 +22,17 @@ namespace InteractApp
 
 		public string DisplayMember { get; set; }
 
-		public IList ItemsSource {
-			get { return (IList)GetValue (ItemsSourceProperty); }
+		public IEnumerable ItemsSource {
+			get { return (IEnumerable)GetValue (ItemsSourceProperty); }
 			set { SetValue (ItemsSourceProperty, value); }
 		}
 
 		public object SelectedItem {
 			get { return (object)GetValue (SelectedItemProperty); }
-			set { 
-				SetValue (SelectedItemProperty, value);
-				UpdateSelected ();
-			}
+			set { SetValue (SelectedItemProperty, value); }
 		}
 
-		private void UpdateSelected ()
-		{
-			if (ItemsSource != null) {
-				if (ItemsSource.Contains (SelectedItem)) {
-					SelectedIndex = ItemsSource.IndexOf (SelectedItem);
-				} else {
-					SelectedIndex = -1;
-				}
-			}
-		}
-
-		private static void OnItemsSourceChanged (BindableObject bindable, IList oldvalue, IList newvalue)
+		private static void OnItemsSourceChanged (BindableObject bindable, IEnumerable oldvalue, IEnumerable newvalue)
 		{
 			var picker = bindable as BindablePicker;
 
@@ -53,7 +40,6 @@ namespace InteractApp
 				picker.Items.Clear ();
 				if (newvalue == null)
 					return;
-				//now it works like "subscribe once" but you can improve
 				foreach (var item in newvalue) {
 					if (string.IsNullOrEmpty (picker.DisplayMember)) {
 						picker.Items.Add (item.ToString ());
@@ -62,12 +48,9 @@ namespace InteractApp
 
 						var prop = type.GetProperty (picker.DisplayMember);
 
-
-						//var value = 
 						picker.Items.Add (prop.GetValue (item).ToString ());
 					}
 				}
-				picker.UpdateSelected ();
 			}
 		}
 
@@ -76,7 +59,15 @@ namespace InteractApp
 			if (SelectedIndex < 0 || SelectedIndex > Items.Count - 1) {
 				SelectedItem = null;
 			} else {
-				SelectedItem = ItemsSource [SelectedIndex];
+				SelectedItem = Items [SelectedIndex];
+			}
+		}
+
+		private static void OnSelectedItemChanged (BindableObject bindable, object oldvalue, object newvalue)
+		{
+			var picker = bindable as BindablePicker;
+			if (newvalue != null) {
+				picker.SelectedIndex = picker.Items.IndexOf (newvalue.ToString ());
 			}
 		}
 	}

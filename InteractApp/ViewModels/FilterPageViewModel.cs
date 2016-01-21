@@ -6,12 +6,136 @@ using System.Linq;
 
 using Newtonsoft.Json;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace InteractApp
 {
 	public class FilterPageViewModel : INotifyPropertyChanged, IViewModel
 	{
 		public FilterOptions Selections;
+		private readonly Dictionary<int, string[]> AREA_TO_SCHOOL_MAPPING = new Dictionary<int, string[]> () { {
+				1,
+				new string[] {
+					"ACLC",
+					"Alameda High",
+					"ASTI",
+					"Encinal High",
+					"Nea",
+					"Oakland High",
+					"Oakland Tech",
+					"Skyline",
+					"St. Joes",
+					"Head Royce",
+					"Oakland Charter"
+				}
+			}, {
+				2,
+				new string[] {
+					"Arroyo",
+					"Castro Valley",
+					"Hayward",
+					"Kipp",
+					"LPS",
+					"Moreau",
+					"Mt. Eden",
+					"Redwood",
+					"San Leandro",
+					"Canyon Middle School"
+				}
+			}, {
+				3,
+				new string[] {
+					"Amador Valley",
+					"Dublin High",
+					"Foothill",
+					"Granada",
+					"Hart Middle School",
+					"Livermore",
+					"Livermore Valley Charter Prep",
+					"Pleasanton Middle School",
+					"Valley Christian"
+				}
+			},
+			{ 4, new string[] { "American High", "Fremont Christian", "James Logan", "Newark Memorial" } }, {
+				5,
+				new string[] {
+					"Alsion Ohlone Montessori",
+					"Horner Jr. High",
+					"Irvington High School",
+					"John F. Kennedy",
+					"Mission San Jose",
+					"Robertson",
+					"Washington"
+				}
+			},
+			{ 6, new string[] { "Independence", "James Lick", "Milpitas", "Mt. Pleasant", "Piedmont Hills", "Summit Rainier" } }, {
+				7,
+				new string[] {
+					"Archbishop Mitty",
+					"Bellarmine",
+					"Brenham",
+					"Gunderson",
+					"Harker",
+					"Lincoln",
+					"Notre Dame",
+					"Pioneer"
+				}
+			}, {
+				8,
+				new string[] {
+					"Andrew Hill",
+					"Evergreen Valley",
+					"Leland",
+					"Oak Grove",
+					"Overfelt High",
+					"Santa Teresa",
+					"Silver Creek",
+					"Valley Christian",
+					"Yerba Buena"
+				}
+			},
+			{ 9, new string[] { "Ann Sobrato", "Anzar", "Central", "Christopher", "GECA", "Gilroy", "Live Oak", "Oakwood" } }, {
+				10,
+				new string[] {
+					"Aptos",
+					"Harbor",
+					"Mission Hill",
+					"San Lorenzo Valley",
+					"Santa Cruz",
+					"Scotts Valley",
+					"Soquel",
+					"Watsonville",
+					"St. Francis",
+					"Cieba"
+				}
+			}, {
+				11,
+				new string[] {
+					"Adrian Wilcox",
+					"Cambrian",
+					"Leigh",
+					"Saint Lawrence",
+					"Santa Clara",
+					"Saratoga",
+					"Westmont",
+					"Prospect",
+					"Peterson MS",
+					"Los Gatos"
+				}
+			},
+			{ 12, new string[] { "Cupertino", "Fremont", "Homestead", "Lynbrook", "Monta Vista", "Cupertino Middle School" } }, {
+				13,
+				new string[] {
+					"German International",
+					"Gunn",
+					"Los Altos",
+					"Mountain View",
+					"Palo Alto",
+					"Pinewood",
+					"Saint Francis"
+				}
+			},
+		};
 
 
 		public FilterPageViewModel ()
@@ -22,6 +146,16 @@ namespace InteractApp
 		public int[] AreaChoices {
 			get {
 				return new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+			}
+		}
+
+		public List<string> SchoolChoices {
+			get {
+				if (AreaIndex < 0) {
+					return new List<string> { "Please select an area." };
+				} else {
+					return AREA_TO_SCHOOL_MAPPING [Area].OrderBy (s => s).ToList ();
+				}
 			}
 		}
 
@@ -99,6 +233,21 @@ namespace InteractApp
 					Selections.Area = value;
 					Selections.Save ();
 					RaisePropertyChanged ("Area");
+					RaisePropertyChanged ("SchoolChoices");
+				}
+			}
+		}
+
+		public int SchoolIndex {
+			get {
+				return Selections.SchoolIndex;
+			}
+
+			set {
+				if (Selections.SchoolIndex != value) {
+					Selections.SchoolIndex = value;
+					Selections.Save ();
+					RaisePropertyChanged ("SchoolIndex");
 				}
 			}
 		}
@@ -239,6 +388,8 @@ namespace InteractApp
 					}
 				}
 				_tagChoices = _tagChoices.OrderBy (t => t).ToList ();
+			} else {
+				_tagChoices = new List<string> { "No events loaded yet." };
 			}
 		}
 
@@ -259,6 +410,7 @@ namespace InteractApp
 		public DateTime ToDate;
 		public int AreaIndex;
 		public int Area;
+		public int SchoolIndex;
 		public string School;
 		public int TagIndex;
 		public string Tag;
@@ -280,7 +432,7 @@ namespace InteractApp
 		{
 			Name = School = Tag = "";
 			FromDate = ToDate = DateTime.Now;
-			AreaIndex = Area = TagIndex = -1;
+			AreaIndex = Area = SchoolIndex = TagIndex = -1;
 
 			FilterName = FilterFromDate = FilterToDate = FilterArea = FilterSchool = FilterTag = false;
 		}

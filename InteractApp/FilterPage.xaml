@@ -39,7 +39,7 @@
 			<!-- School Filter -->
 			<Switch x:Name="FilterSchoolSwitch" Grid.Row="4" Grid.Column="0" IsToggled="{Binding FilterSchool, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
 			<Label Text="School: " Grid.Row="4" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
-			<Entry x:Name="FilterSchoolEntry" Grid.Row="4" Grid.Column="2" Text="{Binding School, Mode=TwoWay}" IsEnabled="{Binding Source={x:Reference Name=FilterSchoolSwitch}, Path=IsToggled}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			<local:BindablePicker x:Name="FilterSchoolPicker" Grid.Row="4" Grid.Column="2" SelectedIndex="{Binding SchoolIndex, Mode=TwoWay}" SelectedItem="{Binding School, Mode=TwoWay}" ItemsSource="{Binding SchoolChoices}" IsEnabled="{Binding Source={x:Reference Name=FilterSchoolSwitch}, Path=IsToggled}" Title="Select" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 			<!-- Tag Filter -->
 			<Switch x:Name="FilterTagSwitch" Grid.Row="5" Grid.Column="0" IsToggled="{Binding FilterTag, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
 			<Label Text="Tag: " Grid.Row="5" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
