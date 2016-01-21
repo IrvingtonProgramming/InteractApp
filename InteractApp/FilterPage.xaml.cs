@@ -21,6 +21,7 @@ namespace InteractApp
 			// Have to set index AFTER picker has been populated
 			FilterAreaPicker.SelectedIndex = ViewModel.AreaIndex;
 			FilterTagPicker.SelectedIndex = ViewModel.TagIndex;
+			FilterSchoolPicker.SelectedIndex = ViewModel.SchoolIndex;
 		}
 
 		protected override void OnDisappearing ()
