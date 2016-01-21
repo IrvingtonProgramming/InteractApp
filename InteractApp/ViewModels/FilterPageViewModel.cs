@@ -230,14 +230,16 @@ namespace InteractApp
 
 		public void GenerateTags (List<Event> events)
 		{
-			foreach (Event e in events) {
-				foreach (string t in e.Tags) {
-					if (!_tagChoices.Contains (t)) {
-						_tagChoices.Add (t);
+			if (events != null && events.Count > 0) {
+				foreach (Event e in events) {
+					foreach (string t in e.Tags) {
+						if (!_tagChoices.Contains (t)) {
+							_tagChoices.Add (t);
+						}
 					}
 				}
+				_tagChoices = _tagChoices.OrderBy (t => t).ToList ();
 			}
-			_tagChoices = _tagChoices.OrderBy (t => t).ToList ();
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
