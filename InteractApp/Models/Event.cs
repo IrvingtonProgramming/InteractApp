@@ -70,9 +70,9 @@ namespace InteractApp
 			private set { SetProperty<string> (value); }
 		}
 
-		public string DateAreasSchool { get { return string.Format ("{0}\nAreas {1} | {2}", this.Date.ToShortDateString (), String.Join (",", this.Areas), this.School); } }
+		public string DateAreasSchool { get { return string.Format ("{0}\nArea{3} {1} | {2}", this.Date.ToShortDateString (), String.Join (",", this.Areas), this.School, this.Areas.Count > 1 ? "s" : ""); } }
 
-		public string AreasSchool { get { return string.Format ("Areas {0} | {1}", String.Join (",", this.Areas), this.School); } }
+		public string AreasSchool { get { return string.Format ("Area{2} {0} | {1}", String.Join (",", this.Areas), this.School, this.Areas.Count > 1 ? "s" : ""); } }
 
 		public Event ()
 		{
