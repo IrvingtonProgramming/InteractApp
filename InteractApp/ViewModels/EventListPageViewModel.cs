@@ -124,7 +124,7 @@ namespace InteractApp
 
 			if (options != null && options.FilterAny) {
 				if (options.FilterName) {
-					filteredEvents = filteredEvents.Where (e => e.Name.Contains (options.Name));
+					filteredEvents = filteredEvents.Where (e => e.Name.IndexOf (options.Name, StringComparison.OrdinalIgnoreCase) >= 0);
 				}
 
 				if (options.FilterFromDate) {
@@ -140,7 +140,7 @@ namespace InteractApp
 				}
 
 				if (options.FilterSchool) {
-					filteredEvents = filteredEvents.Where (e => e.School.Contains (options.School));
+					filteredEvents = filteredEvents.Where (e => e.School.IndexOf (options.School, StringComparison.OrdinalIgnoreCase) >= 0);
 				}
 
 				if (options.FilterTag && !String.IsNullOrEmpty (options.Tag)) {
