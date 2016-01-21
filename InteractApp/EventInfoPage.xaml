@@ -7,22 +7,16 @@
 				<BoxView Color="{x:Static local:ColorResources.InteractColor}" HeightRequest="2" />
 				<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 					<ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" Color="{x:Static local:ColorResources.ActivityIndicator}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-					<Image Source="{Binding E.ImageUri}" Aspect="AspectFill" />
+					<Image Source="{Binding E.ImageUri}" Aspect="AspectFill" MinimumHeightRequest="200" />
 				</Grid>
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="auto" />
-						<RowDefinition Height="auto" />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="auto" />
-						<ColumnDefinition Width="*" />
-					</Grid.ColumnDefinitions>
-					<Label Grid.Row="0" Grid.Column="0" Text="Date:" TextColor="{x:Static local:ColorResources.InteractColor}" FontSize="Medium" FontAttributes="Bold" YAlign="Center" />
-					<Label Grid.Row="1" Grid.Column="0" Text="Areas &amp; School:" TextColor="{x:Static local:ColorResources.InteractColor}" FontSize="Medium" FontAttributes="Bold" YAlign="Center" />
-					<Label Grid.Row="0" Grid.Column="1" Text="{Binding E.Date, StringFormat='{0:f}'}" FontSize="Small" HorizontalOptions="FillAndExpand" XAlign="Center" YAlign="Center" />
-					<Label Grid.Row="1" Grid.Column="1" Text="{Binding E.AreasSchool}" FontSize="Small" HorizontalOptions="FillAndExpand" XAlign="Center" YAlign="Center" LineBreakMode="TailTruncation" />
-				</Grid>
+				<StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+					<Label Text="Date:" TextColor="{x:Static local:ColorResources.InteractColor}" FontSize="Medium" FontAttributes="Bold" YAlign="Center" />
+					<Label Text="{Binding E.Date, StringFormat='{0:f}'}" FontSize="Small" HorizontalOptions="FillAndExpand" XAlign="Center" YAlign="Center" />
+				</StackLayout>
+				<StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+					<Label Text="Areas &amp; School:" TextColor="{x:Static local:ColorResources.InteractColor}" FontSize="Medium" FontAttributes="Bold" YAlign="Center" />
+					<Label Text="{Binding E.AreasSchool}" FontSize="Small" HorizontalOptions="FillAndExpand" XAlign="Center" YAlign="Center" />
+				</StackLayout>
 				<BoxView Color="{x:Static local:ColorResources.InteractColor}" HeightRequest="2" />
 				<Label Text="Event Description" Font="20" TextColor="{x:Static local:ColorResources.InteractColor}" FontAttributes="Bold" />
 				<Label Text="{Binding E.Desc}" />
