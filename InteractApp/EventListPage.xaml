@@ -9,7 +9,7 @@
 	<ContentPage.Content>
 		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 			<ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" Color="{x:Static local:ColorResources.ActivityIndicator}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-			<ListView x:Name="EventList" RowHeight="150" ItemsSource="{Binding Items}" IsVisible="{Binding IsLoading, Converter={StaticResource not}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshListCommand}" IsRefreshing="{Binding IsRefreshing, Mode=OneWay}">
+			<ListView x:Name="EventList" RowHeight="150" ItemsSource="{Binding Items}" IsVisible="{Binding IsLoading, Converter={StaticResource not}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshListCommand}" IsRefreshing="{Binding IsRefreshing, Mode=OneWay}" CachingStrategy="RecycleElement">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<local:CustomEventCell />
