@@ -140,7 +140,7 @@ namespace InteractApp
 				}
 
 				if (options.FilterSchool) {
-					filteredEvents = filteredEvents.Where (e => e.School.IndexOf (options.School, StringComparison.OrdinalIgnoreCase) >= 0 || e.School.IndexOf ("All Schools", StringComparison.OrdinalIgnoreCase) >= 0);
+					filteredEvents = filteredEvents.Where (e => e.School.IndexOf (options.School, StringComparison.OrdinalIgnoreCase) >= 0 || e.School.IndexOf ("All Schools", StringComparison.OrdinalIgnoreCase) >= 0 || e.School.IndexOf ("Invalid School", StringComparison.OrdinalIgnoreCase) >= 0);
 				}
 
 				if (options.FilterTag && !String.IsNullOrEmpty (options.Tag)) {
