@@ -366,6 +366,18 @@ namespace InteractApp
 			}
 		}
 
+		public bool FilterPastEvents {
+			get { return Selections.FilterPastEvents; }
+
+			set {
+				if (Selections.FilterPastEvents != value) {
+					Selections.FilterPastEvents = value;
+					Selections.Save ();
+					RaisePropertyChanged ("FilterPastEvents");
+				}
+			}
+		}
+
 		public void ClearFilters ()
 		{
 			FilterName =
@@ -421,10 +433,11 @@ namespace InteractApp
 		public bool FilterArea;
 		public bool FilterSchool;
 		public bool FilterTag;
+		public bool FilterPastEvents;
 
 		public bool FilterAny {
 			get {
-				return FilterName | FilterFromDate | FilterToDate | FilterArea | FilterSchool | FilterTag;
+				return FilterName | FilterFromDate | FilterToDate | FilterArea | FilterSchool | FilterTag | FilterPastEvents;
 			}
 		}
 
@@ -434,7 +447,7 @@ namespace InteractApp
 			FromDate = ToDate = DateTime.Now;
 			AreaIndex = Area = SchoolIndex = TagIndex = -1;
 
-			FilterName = FilterFromDate = FilterToDate = FilterArea = FilterSchool = FilterTag = false;
+			FilterName = FilterFromDate = FilterToDate = FilterArea = FilterSchool = FilterTag = FilterPastEvents = false;
 		}
 
 		public void Save (string key = "FilterOptions")

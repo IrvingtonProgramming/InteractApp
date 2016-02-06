@@ -146,6 +146,10 @@ namespace InteractApp
 				if (options.FilterTag && !String.IsNullOrEmpty (options.Tag)) {
 					filteredEvents = filteredEvents.Where (e => e.Tags.Contains (options.Tag));
 				}
+
+				if (options.FilterPastEvents) {
+					filteredEvents = filteredEvents.Where (e => DateTime.Compare (DateTime.Now.Date, e.Date.Date) <= 0);
+				}
 			}
 
 			Items = filteredEvents.ToList ();

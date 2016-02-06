@@ -10,6 +10,7 @@
 				<RowDefinition Height="auto" />
 				<RowDefinition Height="auto" />
 				<RowDefinition Height="auto" />
+				<RowDefinition Height="auto" />
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="auto" />
@@ -44,8 +45,11 @@
 			<Switch x:Name="FilterTagSwitch" Grid.Row="5" Grid.Column="0" IsToggled="{Binding FilterTag, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
 			<Label Text="Tag: " Grid.Row="5" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" />
 			<local:BindablePicker x:Name="FilterTagPicker" Grid.Row="5" Grid.Column="2" SelectedIndex="{Binding TagIndex, Mode=TwoWay}" SelectedItem="{Binding Tag, Mode=TwoWay}" ItemsSource="{Binding TagChoices}" IsEnabled="{Binding Source={x:Reference Name=FilterTagSwitch}, Path=IsToggled}" Title="Select" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			<!-- Past Events Filter -->
+			<Switch x:Name="FilterPastEventsSwitch" Grid.Row="6" Grid.Column="0" IsToggled="{Binding FilterPastEvents, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
+			<Label Text="Filter Past Events" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" FontAttributes="Bold" VerticalOptions="Center" />
 			<!-- Buttons -->
-			<StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+			<StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
 				<Button x:Name="FilterClearAllButton" Text="Clear All" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 				<Button x:Name="FilterApplyButton" Text="Apply" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
 			</StackLayout>
