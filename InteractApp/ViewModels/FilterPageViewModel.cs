@@ -386,7 +386,8 @@ namespace InteractApp
 						FilterArea =
 							FilterSchool =
 								FilterTag =
-									false;
+									FilterPastEvents =
+										false;
 		}
 
 		public void GenerateTags (List<Event> events)
