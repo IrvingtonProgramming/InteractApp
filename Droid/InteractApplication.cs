@@ -8,7 +8,7 @@ using Parse;
 
 namespace InteractApp.Droid
 {
-	[Application]
+	[Application (Name = "com.interact_5170.interactapp.InteractApplication")]
 	public class InteractApplication : Application
 	{
 		public InteractApplication (IntPtr javaReference, JniHandleOwnership transfer) : base (javaReference, transfer)
